@@ -9,10 +9,10 @@
       <div class="row" style="margin-top: 60px">
         <div class="col-8 col-md-6 col-lg-4 border rounded mt-5 bg-light mx-auto">
           <img src="img/avatar.png" class="avatar-img">
-          <form class="" action="#" method="post">
-            <label for="email" class="mt-5">Correo: </label><input type="email" id="email" class="form-control">
-            <label for="pass">Contraseña: </label><input type="password" id="pass" class="form-control">
-            <label for="captcha">Codigo de verificacion: </label><input type="text" id="captcha" class="form-control">
+          <form action="inicioSesion.php" method="post">
+            <label for="email" class="mt-5">Correo: </label><input type="email" name="email" class="form-control" required>
+            <label for="pass">Contraseña: </label><input type="password" name="pass" class="form-control" required>
+            <label for="captcha">Codigo de verificacion: </label><input type="text" name="captcha" class="form-control">
             <div class="float-right mt-3">
               <span class="small">Captcha: </span><img src="img/captcha-ex.png" class="captcha-img">
             </div>
