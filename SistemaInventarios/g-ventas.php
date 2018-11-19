@@ -1,5 +1,10 @@
-<?php include_once "templates/header.php"?>
-    <?php include_once "templates/navbarGerente.php"?>
+<?php
+
+  require_once "funciones/db.php";
+  include_once "templates/header.php";
+  include_once "templates/navbarGerente.php";
+
+?>
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
@@ -20,6 +25,7 @@
               </tr>
             </thead>
             <tbody>
+              <!--
               <tr>
                 <td>0000</td>
                 <td>abc@abc.com</td>
@@ -28,6 +34,21 @@
                 <td>$0.00</td>
                 <td>Pendiente</td>
               </tr>
+              -->
+              <?php // MODIFICAR EL QUERY Y LOS NOMBRES DE LA BDD
+              $query = mysqli_query($conn, "SELECT * FROM insumo");
+              while ($f=mysqli_fetch_array($query))
+              {
+                echo "<tr>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "</tr>";
+              }
+              ?>
             </tbody>
           </table>
         </div>
