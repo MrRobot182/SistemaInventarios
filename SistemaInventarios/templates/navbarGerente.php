@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 1) {
+    header("Location: inicioSesion.php");
+  }
+?>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <span class="navbar-brand text-light">Gerente</span>
 
@@ -95,7 +102,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Cerrar sesión</a>
+        <a class="nav-link" href="funciones/cerrarSesion.php">Cerrar sesión</a>
       </li>
     </ul>
   </div>

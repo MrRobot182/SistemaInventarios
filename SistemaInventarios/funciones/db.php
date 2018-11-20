@@ -1,7 +1,20 @@
 <?php
-    $conn = new mysqli('localhost', 'root','n0m3l0','inventarios'); //cambiale la contraseña, la mia es la de n0m3l0
+  $host     = "localhost";
+  $port     = 8080;
+  $socket   = "";
+  $user     = "root";
+  $password = "root";
+  $dbname   = "inventario";
 
-    if($conn->connect_error) {
-      echo $error = $conn->connect_error;
-    }
+  echo "<br><br><hr>";
+  $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
+         or die ('No se pudo conectar a la base de datos' . mysqli_connect_error());
+
+  if($conn->connect_error) {
+    echo $error = $conn->connect_error;
+  }
+  else {
+    echo "conectado";
+  }
+
 ?>
