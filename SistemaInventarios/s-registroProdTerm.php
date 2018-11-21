@@ -3,7 +3,7 @@
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
-        <h3>Registro de producto terminado</h3>
+        <h3>Registro de tipo de producto terminado</h3>
       </div>
 
       <div class="row mt-4">

@@ -27,8 +27,8 @@
                 <td>Pendiente</td>
                 <td>01/01/2019</td>
                 <td>
-                  <form action="#" method="post">
-                    <button type="submit" class="btn btn-primary btn-sm">Autorizar</button>
+                  <form action="#" method="get">
+                    <button type="submit" name="salidaID" value="bro" class="btn btn-primary btn-sm">Autorizar</button>
                   </form>
                 </td>
               </tr>
@@ -46,10 +46,6 @@
           </table>
         </div>
       </div>
-
-
-
-
     </div>
   </div>
 </div>
