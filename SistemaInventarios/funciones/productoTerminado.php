@@ -1,13 +1,11 @@
 <?php
 
-  class Proveedor{
+  class ProductoTerminado{
     private $id;
     private $nombre;
-    private $insumo;
-    private $maximo;
-    private $minimo;
+    private $descripcion;
     private $precio;
-    private $tiempoEntrega;
+    private $img;
 
     public function setId($idp) {
       $this->id = $idp;
@@ -25,27 +23,11 @@
     }
     ////////////////////////////////////////////////////////////////////////////
 
-    public function setInsumo($ins) {
-      $this->insumo = $ins;
+    public function setDescripcion($des) {
+      $this->descripcion = $des;
     }
-    public function getInsumo() {
-      return $this->insumo;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    public function setMaximo($max) {
-      $this->maximo = $max;
-    }
-    public function getMaximo() {
-      return $this->maximo;
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-    public function setMinimo($min) {
-      $this->minimo = $min;
-    }
-    public function getMinimo() {
-      return $this->minimo;
+    public function getDescripcion() {
+      return $this->descripcion;
     }
     ////////////////////////////////////////////////////////////////////////////
 
@@ -57,16 +39,16 @@
     }
     ////////////////////////////////////////////////////////////////////////////
 
-    public function setTiempoEntrega($ten) {
-      $this->tiempoEntrega = $ten;
+    public function setImagen($ima) {
+      $this->img = $ima;
     }
-    public function getTiempoEntrega() {
-      return $this->tiempoEntrega;
+    public function getImagen() {
+      return $this->img;
     }
     ////////////////////////////////////////////////////////////////////////////
 
   }
 
-  $pvrObj = new Proveedor;
+  $ptObj = new ProductoTerminado;
 
 ?>

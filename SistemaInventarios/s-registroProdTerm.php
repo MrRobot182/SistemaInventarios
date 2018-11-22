@@ -8,24 +8,31 @@
 
       <div class="row mt-4">
 
-        <div class="col-11 mx-auto">
+        <div class="col-10 mx-auto">
           <div class="rounded bg-light mx-auto p-2 mb-5">
-            <form class="" action="#" method="post">
-              <label class="mt-1">Nombre: </label><input type="text" class="form-control">
-              <label class="mt-1">Descripción: </label><textarea class="form-control"></textarea>
+            <form action="funciones/supervisor.php" method="post">
+              <label class="mt-1">Nombre: </label><input type="text" name="nombre" class="form-control" required>
+              <label class="mt-1">Descripción: </label><textarea name="descripcion" class="form-control" required></textarea>
 
               <div class="form-row">
                 <div class="col">
-                  <label class="mt-1">Precio: </label><input type="number" class="form-control">
+                  <label class="mt-1">Precio: </label><input type="number" name="precio" class="form-control" step="0.01" required>
                 </div>
                 <div class="col">
-                  <input type="submit" name="" value="Registrar" class="btn btn-primary w-100" style="margin-top:36px">
+                  <label class="mt-1">Imagen:</label><input type="file" name="imagen" class="form-control-file" required>
                 </div>
               </div>
 
-
-
-              </form>
+              <button type="submit" name="accion" value="registrarProdTerm" class="btn btn-primary w-100 mt-4 mb-2">Registrar</button>
+            </form>
+            <?php
+              if(isset($_GET["error"]) && $_GET["error"] == "registro") {
+                    echo '<div class="alert alert-danger">Error en registro</div>';
+              }
+              if(isset($_GET["msj"]) && $_GET["msj"] == "registrado") {
+                    echo '<div class="alert alert-success">Producto registrado a tienda</div>';
+              }
+            ?>
           </div>
         </div>
 
