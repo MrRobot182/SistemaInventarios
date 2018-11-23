@@ -30,9 +30,28 @@
                     echo '<td>'.$producto[descripcion].'</td>';
                     echo '<td>'.$producto[precio].'</td>';
                     //echo '<td>'.$producto[imagen].'</td>';
-                    echo '<td><button type="button" class="btn btn-warning">Ver</button></td>';
+                    //echo '<td><button type="button" class="btn btn-sm btn-secondary">Ver</button></td>';
+                    echo '<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto[id].'">';
+                    echo 'Ver';
+                    echo '</button></td>';
 
-                    echo '<td class="text-center" style="width: 5%">';
+                    echo '
+                    <div class="modal fade" id="imagen-prod'.$producto[id].'">
+                      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <img src="'.$producto[img].'" width="100%">
+                          </div>
+                        </div>
+                      </div>
+                    </div>';
+
+                    echo '<td style="width: 8%">';
                     echo '<form action="s-editaProdTermSel.php" method="post">';
                     echo '<button type="submit" name="id" value="'.$producto[id].'" class="btn btn-primary">';
                     echo 'Editar';
@@ -40,10 +59,10 @@
                     echo '</form>';
                     echo '</td>';
 
-                    echo '<td style="width: 5%">';
-                    echo '<form action="funciones/supervisor.php"'.$proveedor[id].'"" method="post">';
-                    echo '<input type="hidden" name="idel" value="'.$proveedor[id].'">';
-                    echo '<button type="submit" name="accion" value="eliminarProveedor" class="btn btn-danger">';
+                    echo '<td style="width: 8%">';
+                    echo '<form action="funciones/supervisor.php" method="post">';
+                    echo '<input type="hidden" name="idel" value="'.$producto[id].'">';
+                    echo '<button type="submit" name="accion" value="eliminarProdTerm" class="btn btn-danger">';
                     echo 'Eliminar';
                     echo '</button>';
                     echo '</form>';
@@ -62,13 +81,13 @@
           </table>
           <?php
             if(isset($_GET["msj"]) && $_GET["msj"] == "actualizado") {
-                  echo '<div class="alert alert-success">Proveedor actualizado</div>';
+                  echo '<div class="alert alert-success">Producto actualizado</div>';
             }
             if(isset($_GET["error"]) && $_GET["error"] == "registro") {
                   echo '<div class="alert alert-danger">Error en registro</div>';
             }
-            if(isset($_GET["msj"]) && $_GET["msj"] == "minmax") {
-                  echo '<div class="alert alert-danger">Mínimo mayor que máximo</div>';
+            if(isset($_GET["msj"]) && $_GET["msj"] == "existencias") {
+                  echo '<div class="alert alert-danger">No se puede eliminar el producto, aun hay unidades en almacén</div>';
             }
             if(isset($_GET["msj"]) && $_GET["msj"] == "eliminado") {
                   echo '<div class="alert alert-success">Registro eliminado</div>';

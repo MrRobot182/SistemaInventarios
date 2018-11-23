@@ -33,18 +33,18 @@
                     echo '<td>'.$proveedor[minimo].'/'.$proveedor[maximo].'</td>';
                     echo '<td>'.$proveedor[tiempoEntrega].'</td>';
 
-                    echo '<td style="width: 10%">';
+                    echo '<td style="width: 8%">';
                     echo '<form action="s-editaProveedorSel.php" method="post">';
-                    echo '<button type="submit" name="id" value="'.$proveedor[id].'" class="btn btn-primary">';
+                    echo '<button type="submit" name="id" value="'.$proveedor[id].'" class="btn btn-sm btn-primary">';
                     echo 'Editar';
                     echo '</button>';
                     echo '</form>';
                     echo '</td>';
 
-                    echo '<td style="width: 10%">';
-                    echo '<form action="funciones/supervisor.php"'.$proveedor[id].'"" method="post">';
+                    echo '<td style="width: 8%">';
+                    echo '<form action="funciones/supervisor.php" method="post">';
                     echo '<input type="hidden" name="idel" value="'.$proveedor[id].'">';
-                    echo '<button type="submit" name="accion" value="eliminarProveedor" class="btn btn-danger">';
+                    echo '<button type="submit" name="accion" value="eliminarProveedor" class="btn btn-sm btn-danger">';
                     echo 'Eliminar';
                     echo '</button>';
                     echo '</form>';

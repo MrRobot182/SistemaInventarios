@@ -16,7 +16,11 @@
     }
 
     public function autorizarSalida(){
+      echo $_POST["idc"]." autorizada";
+    }
 
+    public function eliminarSalida(){
+      echo $_POST["idc"]." eliminada";
     }
 
     public function registrarProveedor(){
@@ -57,27 +61,6 @@
               header("Location: ../s-registroProveedores.php?error=registro");
             }
           }
-
-          /*$nombre = strtoupper($_POST["nombre"]);
-          $insumo = $_POST["insumo"];
-          $minimo = $_POST["minimo"];
-          $maximo = $_POST["maximo"];
-          $precio = number_format($_POST["precio"], 2, '.', '');
-          $tiempoEntrega = $_POST["tiempoEntrega"];
-
-          $registrar = "INSERT INTO proveedor (nombre,idInsumo,costo,maximo,minimo,tiempoEntrega) VALUES ('$nombre','$insumo','$precio','$maximo','$minimo','$tiempoEntrega')";
-
-          if ($minimo>$maximo) {
-            header("Location: ../s-registroProveedores.php?msj=minmax");
-          }
-          else {
-            if($this->connS->query($registrar)){
-              header("Location: ../s-registroProveedores.php?msj=registrado");
-            }
-            else{
-              header("Location: ../s-registroProveedores.php?error=registro");
-            }
-          }*/
 
         }
         else {
@@ -166,11 +149,57 @@
     }
 
     public function editarProdTerm(){
+      if (isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["precio"]) && isset($_POST["imagen"])) {
+        $this->prt->setId($_POST["id"]);
+        $this->prt->setNombre(strtoupper($_POST["nombre"]));
+        $this->prt->setDescripcion($_POST["descripcion"]);
+        $this->prt->setPrecio(number_format($_POST["precio"], 2, '.', ''));
+        $this->prt->setImagen('img/productos/'.$_POST["imagen"]);
+
+        $id = $this->prt->getId();
+        $nombre = $this->prt->getNombre();
+        $descripcion = $this->prt->getDescripcion();
+        $precio = $this->prt->getPrecio();
+        $imagen = $this->prt->getImagen();
+
+        $actualizar = "UPDATE producto SET nombre='$nombre',descripcion='$descripcion',precio='$precio',img='$imagen' WHERE id='$id'";
+
+        if($this->connS->query($actualizar)){
+          header("Location: ../s-editaProdTerm.php?msj=actualizado");
+        }
+        else{
+          header("Location: ../s-editaProdTerm.php?error=registro");
+        }
+      }
+      else {
+        header("Location: ../s-editaProdTerm.php?error=registro");
+      }
 
     }
 
     public function eliminarProdTerm(){
+      $this->prt->setId($_POST["idel"]);
+      $id = $this->prt->getId();
 
+      $buscarProducto = "SELECT * FROM almacenproductos WHERE idProducto='$id'";
+      $resultado = $this->connS->query($buscarProducto);
+      $count = mysqli_num_rows($resultado);
+
+      if ($count > 0) {
+        header("Location: ../s-editaProdTerm.php?msj=existencias");
+      }
+      else{
+        $eliminar = "DELETE FROM producto WHERE id='$id'";
+        if ($this->connS->query($eliminar)) {
+          header("Location: ../s-editaProdTerm.php?msj=eliminado");
+        }
+        else {
+          header("Location: ../s-editaProdTerm.php?error=eliminacion");
+        }
+      }
+
+
+      $this->connS->close();
     }
   }
 
@@ -193,6 +222,12 @@
   }
   else if (isset($_POST["accion"]) && $_POST["accion"] == "eliminarProdTerm") {
     $sup->eliminarProdTerm();
+  }
+  else if (isset($_POST["accion"]) && $_POST["accion"] == "autorizarSalida") {
+    $sup->autorizarSalida();
+  }
+  else if (isset($_POST["accion"]) && $_POST["accion"] == "eliminarSalida") {
+    $sup->eliminarSalida();
   }
   else{
     header("Location: ../s-autorizacionSalidas.php");
