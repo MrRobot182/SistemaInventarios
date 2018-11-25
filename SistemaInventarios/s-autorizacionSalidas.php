@@ -1,5 +1,4 @@
-<?php include_once "templates/header.php";
-date_default_timezone_set("America/Mexico_City");?>
+<?php include_once "templates/header.php"?>
     <?php include_once "templates/navbarSupervisor.php"?>
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
@@ -25,7 +24,7 @@ date_default_timezone_set("America/Mexico_City");?>
             </thead>
             <tbody>
                 <?php
-                  $consultaCompras = "SELECT a.id,a.idCliente,c.correo,a.idProducto,b.nombre,a.cantidad,a.color,a.talla,a.importe,a.fecha,a.estado FROM compra a INNER JOIN producto b ON a.idProducto=b.id INNER JOIN cliente c ON a.idCliente=c.id";
+                  $consultaCompras = "SELECT a.id,a.idCliente,c.correo,a.idProducto,b.nombre,a.cantidad,a.color,a.talla,a.importe,a.fecha,a.estado FROM compra a INNER JOIN producto b ON a.idProducto=b.id INNER JOIN cliente c ON a.idCliente=c.id ORDER BY a.fecha DESC";
                   if($resultado=$conn->query($consultaCompras)){
                     while ($compra=mysqli_fetch_array($resultado)) {
                       echo "<tr>";
@@ -35,7 +34,7 @@ date_default_timezone_set("America/Mexico_City");?>
                       echo '<td>'.$compra[cantidad].'</td>';
                       echo '<td>'.$compra[color].'</td>';
                       echo '<td>'.$compra[talla].'</td>';
-                      echo '<td>$'.$compra[importe].'</td>';
+                      echo '<td>'.$compra[importe].'</td>';
                       echo '<td>'.$compra[fecha].'</td>';
                       if ($compra[estado] == 0) {
                         echo '<td>';
@@ -70,23 +69,7 @@ date_default_timezone_set("America/Mexico_City");?>
             </tbody>
           </table>
 
-          <?php
-            if(isset($_GET["msj"]) && $_GET["msj"] == "autorizado") {
-                  echo '<div class="alert alert-success">Salida autorizada</div>';
-            }
-            if(isset($_GET["error"]) && $_GET["error"] == "accion") {
-                  echo '<div class="alert alert-danger">Error al ejecutar acción</div>';
-            }
-            if(isset($_GET["msj"]) && $_GET["msj"] == "existencias") {
-                  echo '<div class="alert alert-danger">No se puede autorizar la salida, productos en almacen insuficientes</div>';
-            }
-            if(isset($_GET["msj"]) && $_GET["msj"] == "eliminado") {
-                  echo '<div class="alert alert-success">Registro eliminado</div>';
-            }
-            if(isset($_GET["msj"]) && $_GET["msj"] == "entregado") {
-                  echo '<div class="alert alert-danger">Esta orden ya ha sido entregada</div>';
-            }
-          ?>
+          <!-- test inner join-->
 
 
         </div>

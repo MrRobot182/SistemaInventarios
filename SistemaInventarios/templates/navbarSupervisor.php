@@ -6,14 +6,6 @@
   }
 ?>
 
-<style>
-	.scroll{
-		height: auto;
-		max-height: 250px;
-		overflow-x: hidden;
-	}
-</style>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <span class="navbar-brand text-light">Supervisor</span>
 
@@ -46,71 +38,39 @@
 
       <li class="nav-item mt-3 d-md-none">
         <a class="nav-link" href="s-registroProdTerm.php">
-          <img src="img/ico/s22.png" class="mr-2">Registrar producto
+          <img src="img/ico/s22.png" class="mr-2">Registrar producto terminado
         </a>
       </li>
 
       <li class="nav-item mt-3 d-md-none border-bottom">
         <a class="nav-link" href="s-editaProdTerm.php">
-          <img src="img/ico/s32.png" class="mr-2">Editar producto
+          <img src="img/ico/s32.png" class="mr-2">Editar producto terminado
         </a>
       </li>
 
-			<li class="nav-item mt-2 mr-md-3">
-				<img src="img/ico/not.png">
-				<span class="pr-1 text-light ml-1">Salidas pendientes</span>
-				<?php
-					$consultaCompras = "SELECT * FROM compra WHERE estado=0";
-					$resultado = $conn->query($consultaCompras);
-					$count = mysqli_num_rows($resultado);
-				?>
-				<span class="badge badge-pill badge-primary"><?php echo $count;?></span>
 
-			</li>
-
-      <!--<li class="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           <img src="img/ico/not.png">
           <span class="d-md-none pr-1">Notificaciones</span>
-					<span class="badge badge-pill badge-danger">0</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-right scroll">
+        <div class="dropdown-menu dropdown-menu-right">
+
           <div class="dropdown-item">
             <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
+            <p class="text-nowrap">Insumos - Tipo A: X</p>
             <p class="text-muted">01/01/2019 - 00:00</p>
           </div>
           <div class="dropdown-divider"></div>
 
           <div class="dropdown-item">
             <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
+            <p class="text-nowrap">Insumos - Tipo A: X</p>
             <p class="text-muted">01/01/2019 - 00:00</p>
           </div>
 
         </div>
-      </li>-->
+      </li>
 
 
       <li class="nav-item">
@@ -150,13 +110,13 @@
 
           <li class="nav-item mt-3">
             <a class="nav-link py-0" href="s-registroProdTerm.php">
-              <img src="img/ico/s2.png" class="mr-2">Registrar producto
+              <img src="img/ico/s2.png" class="mr-2">Registrar producto terminado
             </a>
           </li>
 
           <li class="nav-item mt-3">
             <a class="nav-link py-0" href="s-editaProdTerm.php">
-              <img src="img/ico/s3.png" class="mr-2">Editar producto
+              <img src="img/ico/s3.png" class="mr-2">Editar producto terminado
             </a>
           </li>
 

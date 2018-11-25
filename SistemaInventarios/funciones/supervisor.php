@@ -16,71 +16,12 @@
     }
 
     public function autorizarSalida(){
-      $id = $_POST["idc"];
-      $compraSel = "SELECT * FROM compra WHERE id='$id'";
-
-      if ($resultado = $this->connS->query($compraSel)) {
-
-        $compra = $resultado->fetch_assoc();
-        if ($compra[estado] == 1) {
-          header("Location: ../s-autorizacionSalidas.php?msj=entregado");
-        }
-        //AUTORIZAR
-        else {
-          $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=$compra[idProducto] AND talla='$compra[talla]' AND color='$compra[color]'";
-          $resultado = $this->connS->query($consultaAlmacen);
-          $count = mysqli_num_rows($resultado);
-
-          if ($count >= $compra[cantidad]) {
-            $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=$compra[idProducto] AND talla='$compra[talla]' AND color='$compra[color]' ORDER BY fechaAlta ASC";
-            //NO FUNCIONA LA CONSULTA CON LIMIT $compra[cantidad]
-            $resultado = $this->connS->query($consultaAlmacen);
-            for ($i=0; $i < $compra[cantidad]; $i++) {
-              $idpeps = $resultado->fetch_assoc();
-              /*echo $idpeps[idProducto]." ".$idpeps[talla]." ".$idpeps[color]." ".$idpeps[fechaAlta];
-              echo "<hr>";*/
-              $eliminar = "DELETE FROM almacenproductos WHERE id='$idpeps[id]'";
-              $this->connS->query($eliminar);
-            }
-            $entregado = "UPDATE compra SET estado=1 WHERE id='$compra[id]'";
-            $this->connS->query($entregado);
-            header("Location: ../s-autorizacionSalidas.php?msj=autorizado");
-
-            /*while ($idpeps = $resultado->fetch_assoc()) {
-              echo $idpeps[idProducto]." ".$idpeps[talla]." ".$idpeps[color]." ".$idpeps[fechaAlta];
-              echo "<hr>";
-            }*/
-          }
-          else {
-            header("Location: ../s-autorizacionSalidas.php?msj=existencias");
-          }
-        }
-        //AUTORIZAR
-      }
-      else {
-        header("Location: ../s-autorizacionSalidas.php?error=accion");
-      }
-      $this->connS->close();
+      echo $_POST["idc"]." autorizada";
     }
 
     public function eliminarSalida(){
-      $id = $_POST["idc"];
-      $entregado = "SELECT * FROM compra WHERE id='$id'";
-      //VALIDACION DE ENTREGA
-      if($resultado = $this->connS->query($entregado)){
-        $compra = $resultado->fetch_assoc();
-        if ($compra[estado] == 1) {
-          $eliminar = "DELETE FROM compra WHERE id='$id'";
-          $this->connS->query($eliminar);
-          header("Location: ../s-autorizacionSalidas.php?msj=eliminado");
-        }
-        else {
-          header("Location: ../s-autorizacionSalidas.php?error=accion");
-        }
-      }
-
+      echo $_POST["idc"]." eliminada";
     }
-
 
     public function registrarProveedor(){
 
@@ -210,33 +151,24 @@
     public function editarProdTerm(){
       if (isset($_POST["id"]) && isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["precio"]) && isset($_POST["imagen"])) {
         $this->prt->setId($_POST["id"]);
+        $this->prt->setNombre(strtoupper($_POST["nombre"]));
+        $this->prt->setDescripcion($_POST["descripcion"]);
+        $this->prt->setPrecio(number_format($_POST["precio"], 2, '.', ''));
+        $this->prt->setImagen('img/productos/'.$_POST["imagen"]);
+
         $id = $this->prt->getId();
-        $buscarCompras = "SELECT * FROM compra WHERE idProducto='$id'";
-        $resultado = $this->connS->query($buscarCompras);
-        $count = mysqli_num_rows($resultado);
+        $nombre = $this->prt->getNombre();
+        $descripcion = $this->prt->getDescripcion();
+        $precio = $this->prt->getPrecio();
+        $imagen = $this->prt->getImagen();
 
-        if ($count > 0) {
-          header("Location: ../s-editaProdTerm.php?msj=compras");
+        $actualizar = "UPDATE producto SET nombre='$nombre',descripcion='$descripcion',precio='$precio',img='$imagen' WHERE id='$id'";
+
+        if($this->connS->query($actualizar)){
+          header("Location: ../s-editaProdTerm.php?msj=actualizado");
         }
-        else {
-          $this->prt->setNombre(strtoupper($_POST["nombre"]));
-          $this->prt->setDescripcion($_POST["descripcion"]);
-          $this->prt->setPrecio(number_format($_POST["precio"], 2, '.', ''));
-          $this->prt->setImagen('img/productos/'.$_POST["imagen"]);
-
-          $nombre = $this->prt->getNombre();
-          $descripcion = $this->prt->getDescripcion();
-          $precio = $this->prt->getPrecio();
-          $imagen = $this->prt->getImagen();
-
-          $actualizar = "UPDATE producto SET nombre='$nombre',descripcion='$descripcion',precio='$precio',img='$imagen' WHERE id='$id'";
-
-          if($this->connS->query($actualizar)){
-            header("Location: ../s-editaProdTerm.php?msj=actualizado");
-          }
-          else{
-            header("Location: ../s-editaProdTerm.php?error=registro");
-          }
+        else{
+          header("Location: ../s-editaProdTerm.php?error=registro");
         }
       }
       else {
@@ -265,6 +197,8 @@
           header("Location: ../s-editaProdTerm.php?error=eliminacion");
         }
       }
+
+
       $this->connS->close();
     }
   }

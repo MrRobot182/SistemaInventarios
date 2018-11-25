@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-              <button type="submit" name="accion" value="editarProdTerm" class="btn btn-primary w-100 mt-4 mb-2">Editar</button>
+              <button type="submit" name="accion" value="editarProdTerm" class="btn btn-primary w-100 mt-4 mb-2">Registrar</button>
             </form>
 
           </div>

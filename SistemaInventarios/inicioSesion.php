@@ -9,9 +9,8 @@
       </div>
       <div class="row" style="margin-top: 60px">
         <div class="col-8 col-md-6 col-lg-4 border rounded mt-5 bg-light mx-auto">
-          <div class="d-flex justify-content-center">
-            <img src="img/avatar.png" class="avatar-img">
-          </div>
+          <img src="img/avatar.png" class="avatar-img">
+
           <form action="funciones/iniciarSesionCliente.php" name="isform" method="post">
             <label for="email" class="mt-5">Correo: </label><input type="email" name="email" class="form-control" required>
             <label for="pass">Contraseña: </label><input type="password" name="pass" class="form-control" required>
