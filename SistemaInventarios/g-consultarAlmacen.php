@@ -87,6 +87,7 @@
                 FROM
                     almacenproductos
                 JOIN producto ON almacenproductos.idProducto = producto.id
+                ORDER BY id
               ");
               while ($f2=mysqli_fetch_array($query2))
               {
