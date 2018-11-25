@@ -267,6 +267,99 @@
        }
     }
 
+    function consultaProveedor(){
+      global $conn;
+      $query = mysqli_query ($conn, "
+        SELECT
+            proveedor.id,
+            proveedor.nombre,
+            proveedor.idInsumo,
+            proveedor.costo,
+            proveedor.maximo,
+            proveedor.minimo,
+            proveedor.tiempoEntrega,
+            insumo.id,
+            insumo.nombre as nombreIns
+        FROM
+            `proveedor`
+        JOIN insumo
+        ON proveedor.idInsumo = insumo.id
+      ");
+
+      $proveedor = [];
+      $i = 0;
+
+      while ($g = mysqli_fetch_assoc($query)) {
+        echo '<form class="" action="funciones/regInsumos.php" method="post">';
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo  "
+              <div class='form-group'>
+                <label>Proveedor: </label>
+              ";
+        echo "<input type='text' class='form-control' name='tipoInsumo' required value='";
+        echo $g['nombreIns'];
+        echo "'";
+        echo "</div>";
+
+        echo "</form>";
+      }
+
+    }
+
 
 
 ?>
