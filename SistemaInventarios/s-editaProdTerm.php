@@ -3,7 +3,7 @@
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
-        <h3>Editar producto terminado</h3>
+        <h3>Editar producto</h3>
       </div>
 
       <div class="row my-4">
@@ -28,7 +28,7 @@
                     echo '<td>'.$producto[id].'</td>';
                     echo '<td>'.$producto[nombre].'</td>';
                     echo '<td>'.$producto[descripcion].'</td>';
-                    echo '<td>'.$producto[precio].'</td>';
+                    echo '<td>$'.$producto[precio].'</td>';
                     //echo '<td>'.$producto[imagen].'</td>';
                     //echo '<td><button type="button" class="btn btn-sm btn-secondary">Ver</button></td>';
                     echo '<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto[id].'">';
@@ -94,6 +94,9 @@
             }
             if(isset($_GET["error"]) && $_GET["error"] == "eliminacion") {
                   echo '<div class="alert alert-danger">No se pudo eliminar el registro</div>';
+            }
+            if(isset($_GET["msj"]) && $_GET["msj"] == "compras") {
+                  echo '<div class="alert alert-danger">No se puede editar producto, hay compras de cliente pendientes</div>';
             }
           ?>
         </div>
