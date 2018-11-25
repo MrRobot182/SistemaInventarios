@@ -1,5 +1,10 @@
-<?php include_once "templates/header.php"?>
-    <?php include_once "templates/navbarGerente.php"?>
+<?php
+  include_once "templates/header.php";
+  include_once "templates/navbarGerente.php";
+  require "funciones/db.php";
+  require "funciones/metodos.php";
+?>
+
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
@@ -16,37 +21,10 @@
             <div class="card-body">
               <table class="table table-borderless table-light table-sm">
                 <tbody>
-                  <tr>
-                    <td>Insumos tipo A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Insumos tipo B: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto B: </td>
-                    <td>X</td>
-                  </tr>
+                  <?php consultaAlmacen1(); ?>
                 </tbody>
               </table>
             </div>
-            <!--<div class="card-footer">
-              <form action="#">
-                <div class="form-row">
-                  <div class="col">
-                    <input type="number" class="form-control" placeholder="Cantidad">
-                  </div>
-                  <div class="col">
-                    <button type="submit" class="btn btn-primary float-right">Comprar</button>
-                  </div>
-                </div>
-              </form>
-            </div>-->
           </div>
         </div>
 
@@ -59,22 +37,7 @@
             <div class="card-body">
               <table class="table table-borderless table-light table-sm">
                 <tbody>
-                  <tr>
-                    <td>Insumos tipo A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Insumos tipo B: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto B: </td>
-                    <td>X</td>
-                  </tr>
+                  <?php consultaAlmacen2(); ?>
                 </tbody>
               </table>
             </div>
@@ -92,7 +55,6 @@
             </div>-->
           </div>
         </div>
-
         <div class="col-12 col-sm-6 col-lg-4 mb-4 mx-auto">
           <div class="card" style="width: 100%;">
             <div class="card-header">
@@ -101,22 +63,7 @@
             <div class="card-body">
               <table class="table table-borderless table-light table-sm">
                 <tbody>
-                  <tr>
-                    <td>Insumos tipo A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Insumos tipo B: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto A: </td>
-                    <td>X</td>
-                  </tr>
-                  <tr>
-                    <td>Producto B: </td>
-                    <td>X</td>
-                  </tr>
+                  <?php consultaAlmacen3(); ?>
                 </tbody>
               </table>
             </div>
