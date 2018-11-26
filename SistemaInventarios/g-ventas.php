@@ -18,7 +18,7 @@
               <tr>
                 <th>ID cliente</th>
                 <th>Correo</th>
-                <th>Producto</th>
+                <th>Descripción</th>
                 <th>Cantidad</th>
                 <th>Importe</th>
                 <th>Estado</th>
@@ -36,41 +36,17 @@
               </tr>
               -->
               <?php // MODIFICAR EL QUERY Y LOS NOMBRES DE LA BDD
-              $query = mysqli_query($conn, "
-              SELECT
-                  compra.id,
-                  compra.idCliente,
-                  compra.idProducto,
-                  compra.cantidad,
-                  compra.color,
-                  compra.talla,
-                  compra.importe,
-                  compra.fecha,
-                  compra.direccion,
-                  compra.estado,
-                  cliente.id as cId,
-                  cliente.correo,
-                  cliente.nombre
-              FROM
-                  compra
-              JOIN cliente
-              ON compra.idCliente = cliente.id
-              ");
+              $query = mysqli_query($conn, "SELECT * FROM insumo");
               while ($f=mysqli_fetch_array($query))
               {
                 echo "<tr>";
-                echo "<td>" . $f['idCliente'] . " </td>";
-                echo "<td>" . $f['correo'] . " </td>";
-                echo "<td>" . $f['idProducto'] . " </td>";
-                echo "<td>" . $f['cantidad'] . " </td>";
-                echo "<td>" . $f['importe'] . " </td>";
-                if ($f['estado']==0) {
-                  echo "<td>Pendiente</td>";
-                  echo "</tr>";
-                } else {
-                  echo "<td>En proceso </td>";
-                  echo "</tr>";
-                }
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "<td>" . $f['nombre'] . " </td>";
+                echo "</tr>";
               }
               ?>
             </tbody>
