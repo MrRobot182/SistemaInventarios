@@ -35,7 +35,7 @@
             header("Location: ../g-registroInsumos.php?estado=minMaxError");
           }
     } else {
-      header("Location: ../g-registroInsumos.php?estado=varNoDefinidas");
+    header("Location: ../g-registroInsumos.php?estado=varNoDefinidas");
     }
 
 
