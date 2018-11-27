@@ -408,6 +408,7 @@
 
     function consultaHistorial () {
       global $conn;
+      //FALTA AGREGAR WHERE IDCliente = variable sesion del cliente
       $sql = mysqli_query($conn, "
         SELECT
             compra.id,
