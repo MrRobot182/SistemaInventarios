@@ -5,10 +5,10 @@
   include_once "templates/navbarGerente.php";
 
 ?>
-    <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
+       <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
-        <h3>Insumos en almacén</h3>
+      <h3>Insumos en almacén</h3>
       </div>
 
       <div class="row my-4">
