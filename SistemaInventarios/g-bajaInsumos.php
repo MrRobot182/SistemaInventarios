@@ -15,6 +15,10 @@
     if ($msj == "pendant") {
       echo "<script>alert('Ya se encuentra pendiente de eliminación');</script>";
     }
+    if ($msj == "varNoDefinidas") {
+      echo "<script>alert('Error. Faltan datos.');</script>";
+    }
+
 
 
 
