@@ -406,4 +406,40 @@
       }
     }
 
+    function consultaHistorial () {
+      global $conn;
+      $sql = mysqli_query($conn, "
+        SELECT
+            compra.id,
+            compra.idCliente,
+            compra.idProducto,
+            compra.cantidad,
+            compra.importe,
+            compra.estado,
+            compra.fecha,
+            producto.nombre,
+            producto.id AS idMostrar
+        FROM
+            compra
+        JOIN producto ON compra.idProducto = producto.id
+      ");
+
+      while ($f=mysqli_fetch_array($sql)) {
+        echo "<tr>";
+          echo "<td>" . $f['id'] . "</td>";
+          echo "<td>" . $f['fecha'] . "</td>";
+          echo "<td>" . $f['nombre'] . "</td>";
+          echo "<td>" . $f['cantidad'] . "</td>";
+          echo "<td>" . $f['importe'] . "</td>";
+          if ($f['estado']=="0") {
+            echo "<td>Pendiente</td>";
+          } else {
+            echo "<td>En proceso</td>";
+          }
+        echo "</tr>";
+      }
+    }
+
+
+
 ?>
