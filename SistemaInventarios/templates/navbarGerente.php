@@ -87,16 +87,9 @@
 
           <div class="dropdown-item">
             <h6>Punto de reorden</h6>
-            <p class="text-nowrap">Almacén - Producto A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
+            <?php consultaPuntoReorden(); ?>
           </div>
-          <div class="dropdown-divider"></div>
 
-          <div class="dropdown-item">
-            <h6>Punto de reorden</h6>
-            <p class="text-nowrap">Almacén - Producto A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
 
         </div>
       </li>
