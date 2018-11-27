@@ -39,14 +39,14 @@
               echo $insumo . "<br />";
               echo $ubicacion . "<br />";
               echo $cantidad . "<br />";
-              header("Location: ../g-registroInsumos.php?estado=insertSuccess");
+              header("Location: ../g-bajaInsumos.php?msj=dbok");
 
           } else {
               echo "<br />Error: " . $query . "<br>" . mysqli_error($conn);
               echo $insumo . "<br />";
               echo $ubicacion . "<br />";
               echo $cantidad . "<br />";
-              header("Location: ../g-registroInsumos.php?estado=insertError");
+              header("Location: ../g-bajaInsumos.php?msj=dberror");
           }
 
         } else {
@@ -54,7 +54,7 @@
                       echo "<br />" . $insumo;
                       echo "<br />" . $ubicacion;
                       echo "<br />" . $cantidad;
-        header("Location: ../g-registroInsumos.php?estado=varNoDefinidas");
+        header("Location: ../g-bajaInsumos.php?msj=varNoDefinidas");
     }
 
 
