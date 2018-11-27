@@ -87,7 +87,17 @@
 
           <div class="dropdown-item">
             <h6>Punto de reorden</h6>
-            <!-- <?php consultaPuntoReorden(); ?> -->
+            <?php
+              global $conn;
+              $query = mysqli_query($conn, "SELECT count(*) as total from almaceninsumos");
+                if ($f=mysqli_fetch_array($query)) {
+                  if ($f['total'] < 10) {
+                    echo "<p class='text-nowrap' style='color:red;'><strong>¡Insumos menores a 10!</strong></p>";
+                  } else {
+                    echo "<p class='text-nowrap'><strong>Sin notificaciones</strong></p>";
+                  }
+                }
+            ?>
           </div>
 
 
