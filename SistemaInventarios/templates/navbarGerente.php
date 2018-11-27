@@ -87,7 +87,7 @@
 
           <div class="dropdown-item">
             <h6>Punto de reorden</h6>
-            <?php consultaPuntoReorden(); ?>
+            <!-- <?php consultaPuntoReorden(); ?> -->
           </div>
 
 
