@@ -24,14 +24,14 @@
 
           // ¡PENDIENTE !
           $query = "INSERT INTO `almaceninsumos` (`id`, `idInsumo`, `ubicacion`, `fechaAlta`) VALUES (NULL, '$tipoInsumo', '$ubicacion', '$date');";
-
+          $sql = "";
           for ($i=0; $i < $cantidad; $i++) {
             $sql .= $query;
           }
 
           if (mysqli_multi_query($conn, $sql)) {
               echo "Creado correctamente";
-              echo $date;
+              echo $cantidad;
               header("Location: ../g-registroInsumos.php?estado=insertSuccess");
 
           } else {

@@ -157,7 +157,7 @@
           }
       }
     }
-
+    // esta no se ocupará
     function consultaAlmacenProdTerminado() {
         global $conn;
         $query = mysqli_query($conn, "
@@ -170,7 +170,7 @@
               producto.nombre
           FROM
               almacenproductos
-          JOIN producto ON almacenproductos.idProducto = producto.id
+          JOIN producto ON almacenproductos.id = producto.id
         ");
 
 
@@ -361,5 +361,49 @@
     }
 
 
+
+    function consultaBajaProdTerm () {
+        global $conn;
+        $query = mysqli_query($conn, "
+          SELECT
+              almacenproductos.id,
+              almacenproductos.idProducto,
+              almacenproductos.ubicacion,
+              almacenproductos.fechaAlta,
+              almacenproductos.talla,
+              almacenproductos.color,
+              producto.nombre
+          FROM
+              almacenproductos
+          JOIN producto ON almacenproductos.idProducto = producto.id
+        ");
+
+
+
+        while ($f=mysqli_fetch_array($query)) {
+          echo "<option value='" . $f['id'] . "'>" . $f['id'] . " - " . $f['nombre'] . " - " . $f['ubicacion'] . " - " . $f['fechaAlta'] . " - " . $f['talla'] . " - " . $f['color'] . "</option>";
+        }
+
+        //print_r ($idProductos);
+
+        //for ($i=0; $i < $conteo; $i++) {
+        //  echo "<br />Producto: " . $productos[$i] . " - id: " . $idProductos[$i];
+        //}
+
+        if (empty($productos)) {
+          echo "<h2>No hay Producto Terminado Registrado.</h2>";
+        } else {
+          echo "<option>" . $f['nombre'] . " - " . $f[''] . "</option>";
+       }
+    }
+
+    function consultaProducto () {
+      global $conn;
+      $query = mysqli_query($conn, "SELECT * from producto");
+      while ($f=mysqli_fetch_array($query)) {
+        echo $f['nombre'] . " " . $f['descripcion'] . " " . $f['precio'];
+        echo "<img src='" . $f['img'] . "' />";
+      }
+    }
 
 ?>

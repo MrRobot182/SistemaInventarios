@@ -26,16 +26,16 @@
 
             if ($sql) {
               //echo "<script>alert('CORRECTO');</script>";
-              header("Location: ../g-registroInsumos.php?estado=insertSuccess");
+              header("Location: ../g-ordenarCompra.php?estado=insertSuccess");
             } else {
               //echo "<script>alert('Error');</script>";
-              header("Location: ../g-registroInsumos.php?estado=insertError");
+              header("Location: ../g-ordenarCompra.php?estado=insertError");
             }
           } else {
-            header("Location: ../g-registroInsumos.php?estado=minMaxError");
+            header("Location: ../g-ordenarCompra.php?estado=minMaxError");
           }
     } else {
-    header("Location: ../g-registroInsumos.php?estado=varNoDefinidas");
+    header("Location: ../g-ordenarCompra.php?estado=varNoDefinidas");
     }
 
 
