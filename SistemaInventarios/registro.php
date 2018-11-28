@@ -8,7 +8,9 @@
       </div>
       <div class="row" style="margin-top: 60px">
         <div class="col-8 col-md-6 col-lg-4 border rounded mt-5 bg-light mx-auto">
-          <img src="img/avatar.png" class="avatar-img">
+          <div class="d-flex justify-content-center">
+            <img src="img/avatar.png" class="avatar-img">
+          </div>
           <form action="funciones/registrar.php" method="post" class="mt-5">
             <label for="nombre">Nombre: </label><input type="text" name="nombre" class="form-control text-uppercase" required>
             <label for="email">Correo: </label><input type="email" name="email" class="form-control" required>
