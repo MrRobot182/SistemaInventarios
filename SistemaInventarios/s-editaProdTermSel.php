@@ -30,6 +30,27 @@
               <label class="mt-1">Descripción: </label><textarea name="descripcion" class="form-control" required><?php echo $producto["descripcion"];?></textarea>
 
               <div class="form-row">
+                <div class="col-6">
+                  <label class="mt-1">Insumo que vende: </label>
+                  <select name="insumo" class="custom-select" required>
+                    <?php
+                      $consultaInsumos = "SELECT * FROM insumo";
+                      if($resultado=$conn->query($consultaInsumos)){
+                        while ($insumo=mysqli_fetch_array($resultado)) {
+                          echo '<option value="'.$insumo[id].'">'.$insumo[nombre].'</option>';
+                        }
+                      }
+                      $conn->close();
+                    ?>
+
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="mt-1">Insumos para producir talla pequeña:</label><input type="number" min="1" name="cantidad" class="form-control" step="1" required value="<?php echo $producto["cantidadChico"];?>">
+                </div>
+              </div>
+
+              <div class="form-row">
                 <div class="col">
                   <label class="mt-1">Precio: </label><input type="number" value="<?php echo $producto["precio"];?>" name="precio" class="form-control" step="0.01" required>
                 </div>
@@ -38,7 +59,7 @@
                 </div>
               </div>
 
-              <button type="submit" name="accion" value="editarProdTerm" class="btn btn-primary w-100 mt-4 mb-2">Registrar</button>
+              <button type="submit" name="accion" value="editarProdTerm" class="btn btn-primary w-100 mt-4 mb-2">Editar</button>
             </form>
 
           </div>

@@ -1,9 +1,14 @@
 <?php include_once "templates/header.php"?>
     <?php include_once "templates/navbarSupervisor.php"?>
+    <style>
+      .sidebar-left{
+        position: relative;
+      }
+    </style>
     <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
 
       <div class="row border-bottom">
-        <h3>Editar producto terminado</h3>
+        <h3>Editar producto</h3>
       </div>
 
       <div class="row my-4">
@@ -13,7 +18,9 @@
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th style="width:40%;">Descripción</th>
+                <th>Descripción</th>
+                <th>Insumo</th>
+                <th>Cantidad para producir</th>
                 <th>Precio</th>
                 <th>Imagen</th>
                 <th colspan="2">Acciones</th>
@@ -21,17 +28,20 @@
             </thead>
             <tbody>
               <?php
-                $consultaProductos = "SELECT * FROM producto";
+                $consultaProductos = "SELECT a.id,a.nombre,a.descripcion,b.nombre as insumo,a.cantidadChico,a.precio,a.img FROM producto a INNER JOIN insumo b ON a.idInsumo=b.id";
+
                 if($resultado=$conn->query($consultaProductos)){
                   while ($producto=mysqli_fetch_array($resultado)) {
                     echo '<tr>';
                     echo '<td>'.$producto[id].'</td>';
                     echo '<td>'.$producto[nombre].'</td>';
                     echo '<td>'.$producto[descripcion].'</td>';
-                    echo '<td>'.$producto[precio].'</td>';
+                    echo '<td>'.$producto[insumo].'</td>';
+                    echo '<td>'.$producto[cantidadChico].'</td>';
+                    echo '<td>$'.$producto[precio].'</td>';
                     //echo '<td>'.$producto[imagen].'</td>';
                     //echo '<td><button type="button" class="btn btn-sm btn-secondary">Ver</button></td>';
-                    echo '<td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto[id].'">';
+                    echo '<td><button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto[id].'">';
                     echo 'Ver';
                     echo '</button></td>';
 
@@ -53,7 +63,7 @@
 
                     echo '<td style="width: 8%">';
                     echo '<form action="s-editaProdTermSel.php" method="post">';
-                    echo '<button type="submit" name="id" value="'.$producto[id].'" class="btn btn-primary">';
+                    echo '<button type="submit" name="id" value="'.$producto[id].'" class="btn btn-sm btn-primary">';
                     echo 'Editar';
                     echo '</button>';
                     echo '</form>';
@@ -62,7 +72,7 @@
                     echo '<td style="width: 8%">';
                     echo '<form action="funciones/supervisor.php" method="post">';
                     echo '<input type="hidden" name="idel" value="'.$producto[id].'">';
-                    echo '<button type="submit" name="accion" value="eliminarProdTerm" class="btn btn-danger">';
+                    echo '<button type="submit" name="accion" value="eliminarProdTerm" class="btn btn-sm btn-danger">';
                     echo 'Eliminar';
                     echo '</button>';
                     echo '</form>';
@@ -79,6 +89,7 @@
 
             </tbody>
           </table>
+          <p class="text-muted">*La cantidad mostrada para producir es para una talla chica, para una mediana se usa el doble y para una grande el triple</p>
           <?php
             if(isset($_GET["msj"]) && $_GET["msj"] == "actualizado") {
                   echo '<div class="alert alert-success">Producto actualizado</div>';
@@ -95,7 +106,11 @@
             if(isset($_GET["error"]) && $_GET["error"] == "eliminacion") {
                   echo '<div class="alert alert-danger">No se pudo eliminar el registro</div>';
             }
+            if(isset($_GET["msj"]) && $_GET["msj"] == "compras") {
+                  echo '<div class="alert alert-danger">No se puede editar producto, hay compras de cliente pendientes</div>';
+            }
           ?>
+
         </div>
       </div>
 
