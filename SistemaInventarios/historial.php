@@ -22,6 +22,7 @@
                 <th scope="col">Color</th>
                 <th scope="col">Talla</th>
                 <th scope="col">Importe</th>
+                <th scope="col">Dirección</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Estado</th>
               </tr>
@@ -39,6 +40,12 @@
           <?php
             if(isset($_GET["msj"]) && $_GET["msj"] == "comprado") {
               echo '<div class="alert alert-success">Compras añadidas</div>';
+            }
+            if(isset($_GET["msj"]) && $_GET["msj"] == "eliminado") {
+              echo '<div class="alert alert-success">Eliminado</div>';
+            }
+            if(isset($_GET["error"]) && $_GET["error"] == "accion") {
+              echo '<div class="alert alert-danger">No se pudo completar la acción</div>';
             }
           ?>
         </div>

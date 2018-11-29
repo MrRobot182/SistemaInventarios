@@ -408,7 +408,7 @@
 
     function consultaHistorial ($idCliente) {
       global $conn;
-      $consultaCompras = "SELECT a.id,a.idCliente,c.correo,a.idProducto,b.nombre,a.cantidad,a.color,a.talla,a.importe,a.fecha,a.estado FROM compra a INNER JOIN producto b ON a.idProducto=b.id INNER JOIN cliente c ON a.idCliente=c.id WHERE a.idCliente='$idCliente' ORDER BY a.fecha ASC";
+      $consultaCompras = "SELECT a.id,a.idCliente,c.correo,a.idProducto,b.nombre,a.cantidad,a.color,a.talla,a.importe,a.fecha,a.estado,a.direccion FROM compra a INNER JOIN producto b ON a.idProducto=b.id INNER JOIN cliente c ON a.idCliente=c.id WHERE a.idCliente='$idCliente' ORDER BY a.fecha ASC";
       if($resultado=$conn->query($consultaCompras)){
         while ($compra=mysqli_fetch_array($resultado)) {
           echo "<tr>";
@@ -418,12 +418,40 @@
           echo '<td>'.$compra[color].'</td>';
           echo '<td>'.$compra[talla].'</td>';
           echo '<td>$'.$compra[importe].'</td>';
+          echo '<td>'.$compra[direccion].'</td>';
           echo '<td>'.$compra[fecha].'</td>';
           if ($compra[estado] == 0) {
-            echo '<td>Pendiente</td>';
+            //echo '<td class="text-danger">Pendiente</td>';
+
+            echo '<td><button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#cancelar'.$compra[id].'">';
+            echo 'Cancelar';
+            echo '</button></td>';
+
+            echo '
+            <div class="modal fade" id="cancelar'.$compra[id].'">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>¿Estas seguro de cancelar esta compra? (ID: '.$compra[id].')</p>
+
+                  </div>
+                  <div class="modal-footer">
+                    <form action="funciones/cancelarCompra.php" method="post">
+                      <button type="submit" name="cancelar" value="'.$compra[id].'" class="btn btn-danger">Si, cancelar esta compra</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>';
+
           }
           else {
-            echo '<td>Entregado</td>';
+            echo '<td class="text-muted">Entregado</td>';
           }
           echo "</tr>";
         }
