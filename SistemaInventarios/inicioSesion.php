@@ -12,7 +12,7 @@
           <div class="d-flex justify-content-center">
             <img src="img/avatar.png" class="avatar-img">
           </div>
-          <form action="funciones/iniciarSesionCliente.php" name="isform" method="post">
+          <form action="funciones/iniciarSesionCliente.php" method="post">
             <label for="email" class="mt-5">Correo: </label><input type="email" name="email" class="form-control" required>
             <label for="pass">Contraseña: </label><input type="password" name="pass" class="form-control" required>
             <label for="captcha">Código de verificación: </label><input type="text" name="captcha" class="form-control" required>
