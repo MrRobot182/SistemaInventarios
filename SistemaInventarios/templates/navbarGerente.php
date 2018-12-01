@@ -1,8 +1,11 @@
 <?php
+	require('funciones/db.php');
 	session_start();
 	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 1) {
     header("Location: inicioSesion.php");
   }
+
+
 ?>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -54,45 +57,74 @@
       </li>
 
 
+			<!-- NOTIFICACIONES -->
 
-      <li class="nav-item dropdown">
+			<li class="nav-item dropdown pr-4">
         <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="img/ico/not.png">
-          <span class="d-md-none pl-1">Notificaciones</span>
+					<img src="img/ico/reo.png">
+					<span class=" text-light ml-1">Notificaciones</span>
+					<?php
+						$consultaProductos = "SELECT compra.id, compra.idProducto, compra.estado, compra.fecha, producto.nombre FROM `compra` JOIN producto ON compra.idProducto = producto.id WHERE compra.estado = 1 LIMIT 4";
+						$resultado = $conn->query($consultaProductos);
+						$cantidadProductos = mysqli_num_rows($resultado);
+					?>
+						<?php
+						 	if ($cantidadProductos<=4) {
+								echo '<span class="badge badge-pill badge-danger">';
+								echo '</span>';
+						 	}
+						?>
+
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-
           <div class="dropdown-item">
-            <h6>Salida autorizada</h6>
-            <p class="text-nowrap">Almacén - Producto A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
+            <h6>Ultimas salidas autorizadas</h6>
+						<nav>
+							<?php
+								while($f=mysqli_fetch_array($resultado)){
+									echo "<p>";
+									echo "ID: " . $f['id'];
+									echo " - Producto: " . $f['nombre'];
+									echo "</p>";
+								}
+							?>
 
-          <div class="dropdown-item">
-            <h6>Salida autorizada</h6>
-            <p class="text-nowrap">Almacén - Producto A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
+						</nav>
           </div>
-
         </div>
       </li>
+			<!-- FIN DROPDOWN REORDEN -->
 
-      <li class="nav-item dropdown">
+
+			<!-- DROPWODWN DE PUNTO DE REORDEN-->
+
+			<li class="nav-item dropdown pr-4">
         <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="img/ico/reo.png" class="px-md-4">
-          <span class="d-md-none pl-1">Reorden</span>
+					<img src="img/ico/reo.png">
+					<span class=" text-light ml-1">Punto de reorden</span>
+					<?php
+						$consultaProductos = "SELECT * FROM almacenproductos";
+						$resultado = $conn->query($consultaProductos);
+						$cantidadProductos = mysqli_num_rows($resultado);
+					?>
+
+						<?php
+						 	if ($cantidadProductos<=10) {
+								echo '<span class="badge badge-pill badge-danger">';
+								echo "1";
+								echo '</span>';
+						 	}
+						?>
+
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-
-          <div class="dropdown-item">
-            <h6>Punto de reorden</h6>
-            
+				  <div class="dropdown-item">
+            <h6>REORDEN: </h6>
+            <p class="text-muted">El almacen cuenta con <?php echo $cantidadProductos ?>/10 productos</p>
           </div>
-
-
         </div>
       </li>
+			<!-- FIN DROPDOWN REORDEN -->
 
       <li class="nav-item">
         <a class="nav-link" href="funciones/cerrarSesion.php">Cerrar sesión</a>
