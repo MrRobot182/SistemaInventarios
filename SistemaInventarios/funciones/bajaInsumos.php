@@ -3,58 +3,48 @@
 
     // Verifico si están deifnidos los datos mediante POST
     // y verifica si no están vacíos
-    if (isset($_POST['insumo']) &&
-        isset($_POST['ubicacion']) &&
-        isset($_POST['cantidad']) &&
-        $_POST['insumo'] != "" &&
-        $_POST['ubicacion'] != "" &&
-        $_POST['cantidad'] != ""
-      ) {
+
+    if (isset($_POST['idInsumo']) && $_POST['idInsumo'] != "")
+      {
         //almaceno en variables
-          $insumo = $_POST['insumo'];
-          $ubicacion = $_POST['ubicacion'];
-          $cantidad = $_POST['cantidad'];
+          $id = $_POST['idInsumo'];
+          $tipo = 0; // 0 para insumo 1 para prod terminado
 
-          echo "<br />" . $insumo;
-          echo "<br />" . $ubicacion;
-          echo "<br />" . $cantidad;
+          echo "<br />" . $id;
+          echo "<br />" . $tipo;
 
-          date_default_timezone_set('America/Mexico_City');
-          $fecha = date('Y-m-d H:i:s');
-
-          // ¡PENDIENTE !
           $query = "
-          INSERT INTO `salidainsumos`(
-              `id`,
-              `idInsumo`,
-              `cantidad`,
-              `ubicacion`
-          )
-          VALUES(NULL, '$insumo', '$cantidad', '$ubicacion');
+          INSERT INTO salidasgerente (tipo, idObjeto)
+          SELECT '0', '$id' FROM DUAL
+          WHERE NOT EXISTS (SELECT * FROM salidasgerente
+                WHERE idObjeto='$id')
+          LIMIT 1
           ";
 
 
           if (mysqli_query($conn, $query)) {
               echo "Creado correctamente";
-              echo $insumo . "<br />";
-              echo $ubicacion . "<br />";
-              echo $cantidad . "<br />";
+                echo "<br />" . $id;
+                echo "<br />" . $tipo;
+
+            if (mysqli_affected_rows($conn)>0) {
               header("Location: ../g-bajaInsumos.php?msj=dbok");
+            } else {
+              header("Location: ../g-bajaInsumos.php?msj=pendant");
+            }
+
 
           } else {
               echo "<br />Error: " . $query . "<br>" . mysqli_error($conn);
-              echo $insumo . "<br />";
-              echo $ubicacion . "<br />";
-              echo $cantidad . "<br />";
+                echo "<br />" . $id;
+                echo "<br />" . $tipo;
               header("Location: ../g-bajaInsumos.php?msj=dberror");
           }
 
         } else {
-
-                      echo "<br />" . $insumo;
-                      echo "<br />" . $ubicacion;
-                      echo "<br />" . $cantidad;
-        header("Location: ../g-bajaInsumos.php?msj=varNoDefinidas");
+                        echo "<br />" . $id;
+                        echo "<br />" . $tipo;
+                        header("Location: ../g-bajaInsumos.php?msj=varNoDefinidas");
     }
 
 

@@ -361,6 +361,41 @@
     }
 
 
+    function consultaBajaInsumos () {
+        global $conn;
+        $query1 = mysqli_query($conn, "
+          SELECT
+              almaceninsumos.id,
+              almaceninsumos.ubicacion,
+              almaceninsumos.idInsumo,
+              almaceninsumos.fechaAlta,
+              insumo.nombre
+          FROM
+              almaceninsumos
+          JOIN insumo
+          ON almaceninsumos.idInsumo = insumo.id
+        ");
+
+
+
+        while ($f=mysqli_fetch_array($query1)) {
+          echo "<option value='";
+          echo $f['id'] . "'>";
+          echo $f['id'] . " - ";
+          echo $f['nombre'] . " - ";
+          echo $f['fechaAlta'];
+          echo "</option>";
+        }
+
+        echo $f;
+        //print_r ($idProductos);
+
+        //for ($i=0; $i < $conteo; $i++) {
+        //  echo "<br />Producto: " . $productos[$i] . " - id: " . $idProductos[$i];
+        //}
+
+    }
+
 
     function consultaBajaProdTerm () {
         global $conn;
