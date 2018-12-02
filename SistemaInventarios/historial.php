@@ -1,8 +1,6 @@
 <?php
   include_once "templates/header.php";
   include_once "templates/navbarCliente.php";
-  require "funciones/metodos.php";
-  require "funciones/db.php";
 ?>
 
 
@@ -32,7 +30,58 @@
                 $consultaId = "SELECT id FROM cliente WHERE correo='$_SESSION[usuario]'";
                 $resultado = $conn->query($consultaId);
                 $cliente = $resultado->fetch_assoc();
-                consultaHistorial($cliente[id]);
+                $consultaCompras = "SELECT a.id,c.correo,a.idProducto,b.nombre,a.cantidad,a.color,a.talla,a.importe,a.fecha,a.estado,a.direccion FROM compra a INNER JOIN producto b ON a.idProducto=b.id INNER JOIN cliente c ON a.idCliente=c.id WHERE a.idCliente='$cliente[id]' ORDER BY a.fecha ASC";
+                if($resultado=$conn->query($consultaCompras)){
+                  while ($compra=mysqli_fetch_array($resultado)) {
+                    echo "<tr>";
+                    echo '<td>'.$compra[id].'</td>';
+                    echo '<td>'.$compra[nombre].'</td>';
+                    echo '<td>'.$compra[cantidad].'</td>';
+                    echo '<td>'.$compra[color].'</td>';
+                    echo '<td>'.$compra[talla].'</td>';
+                    echo '<td>$'.$compra[importe].'</td>';
+                    echo '<td>'.$compra[direccion].'</td>';
+                    echo '<td>'.$compra[fecha].'</td>';
+                    if ($compra[estado] == 0) {
+                      //echo '<td class="text-danger">Pendiente</td>';
+
+                      echo '<td><button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#cancelar'.$compra[id].'">';
+                      echo 'Cancelar';
+                      echo '</button></td>';
+
+                      echo '
+                      <div class="modal fade" id="cancelar'.$compra[id].'">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>¿Estas seguro de cancelar esta compra? (ID: '.$compra[id].')</p>
+
+                            </div>
+                            <div class="modal-footer">
+                              <form action="funciones/cliente.php" method="post">
+                                <input type="hidden" name="cancelar" value="'.$compra[id].'">
+                                <button type="submit" name="accion" value="cancelarCompra" class="btn btn-danger">Si, cancelar esta compra</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>';
+
+                    }
+                    else {
+                      echo '<td class="text-muted">Entregado</td>';
+                    }
+                    echo "</tr>";
+                  }
+                }
+                else {
+                  echo "Error";
+                }
                 $conn->close();
               ?>
             </tbody>

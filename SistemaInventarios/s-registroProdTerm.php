@@ -16,7 +16,7 @@
 
               <div class="form-row">
                 <div class="col-6">
-                  <label class="mt-1">Insumo que vende: </label>
+                  <label class="mt-1">Insumo para producir: </label>
                   <select name="insumo" class="custom-select" required>
                     <?php
                       $consultaInsumos = "SELECT * FROM insumo";

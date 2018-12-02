@@ -87,15 +87,13 @@
 						$consultaProductos = "SELECT * FROM almacenproductos";
 						$resultado = $conn->query($consultaProductos);
 						$cantidadProductos = mysqli_num_rows($resultado);
-					?>
 
-						<?php
-						 	if ($cantidadProductos<=10) {
-								echo '<span class="badge badge-pill badge-danger">';
-								echo "1";
-								echo '</span>';
-						 	}
-						?>
+					 	if ($cantidadProductos<=10) {
+							echo '<span class="badge badge-pill badge-danger">';
+							echo "1";
+							echo '</span>';
+					 	}
+					?>
 
         </a>
         <div class="dropdown-menu dropdown-menu-right">

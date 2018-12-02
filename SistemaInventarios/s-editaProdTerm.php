@@ -13,7 +13,7 @@
 
       <div class="row my-4">
         <div class="col-12 mx-auto">
-          <table class="table table-hover table-responsive-md table-light rounded table-sm">
+          <table class="table table-hover table-responsive-md table-light rounded table-sm text-center">
             <thead>
               <tr>
                 <th>ID</th>

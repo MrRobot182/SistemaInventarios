@@ -21,7 +21,7 @@
         <div class="col-12 col-md-6 my-auto">
           <div class="mx-auto" style="width:80%">
 
-            <form class="mb-5" action="funciones/añadirCarrito.php" method="post">
+            <form class="mb-5" action="funciones/cliente.php" method="post">
               <input type="hidden" name="idp" value="<?php echo $producto[id]?>">
               <input type="hidden" name="nombrep" value="<?php echo $producto[nombre]?>">
               <input type="hidden" name="precio" value="<?php echo $producto[precio]?>">
@@ -45,10 +45,16 @@
                 </div>
               </div>
 
-              <label class="mt-2">Cantidad: </label>
-              <input type="number" name="cantidad" step="1" min="1" max="5" class="form-control mb-4" required>
+              <label class="my-2">Cantidad: </label>
+              <select name="cantidad" class="custom-select" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
-              <button type="submit" name="accion" class="btn w-100 btn-primary">Agregar al carrito</button>
+              <button type="submit" name="accion" value="agregarCarrito" class="btn w-100 btn-primary mt-4">Agregar al carrito</button>
 
             </form>
 

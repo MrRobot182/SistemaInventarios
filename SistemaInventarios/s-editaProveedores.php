@@ -16,7 +16,7 @@
                 <th>Insumo</th>
                 <th>Precio</th>
                 <th>Min/Max</th>
-                <th class="text-nowrap">Tiempo de entrega (días)</th>
+                <th class="text-nowrap">Tiempo de entrega</th>
                 <th colspan="2">Acciones</th>
               </tr>
             </thead>
@@ -31,7 +31,7 @@
                     echo '<td>'.$proveedor[idInsumo].'</td>';
                     echo '<td>'.$proveedor[costo].'</td>';
                     echo '<td>'.$proveedor[minimo].'/'.$proveedor[maximo].'</td>';
-                    echo '<td>'.$proveedor[tiempoEntrega].'</td>';
+                    echo '<td>'.$proveedor[tiempoEntrega].' día/s</td>';
 
                     echo '<td style="width: 8%">';
                     echo '<form action="s-editaProveedorSel.php" method="post">';
@@ -76,6 +76,9 @@
             }
             if(isset($_GET["error"]) && $_GET["error"] == "eliminacion") {
                   echo '<div class="alert alert-danger">No se pudo eliminar el registro</div>';
+            }
+            if(isset($_GET["error"]) && $_GET["error"] == "compras") {
+                  echo '<div class="alert alert-danger">Hay compras de insumos pendientes de este proveedor</div>';
             }
           ?>
         </div>

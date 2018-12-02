@@ -35,9 +35,9 @@
               echo '<td>$'.$_SESSION[importe][$key].'</td>';
             ?>
               <td>
-                <form class="" action="funciones/eliminarCarrito.php" method="post">
+                <form action="funciones/cliente.php" method="post">
                   <input type="hidden" name="indice" value="<?php echo $key?>">
-                  <button type="submit" name="quitar" class="btn btn-danger btn-sm">Quitar</button>
+                  <button type="submit" name="accion" value="eliminarCarrito" class="btn btn-danger btn-sm">Quitar</button>
                 </form>
               </td>
           <?php
@@ -56,7 +56,7 @@
 
       <div class="row mx-1 mx-sm-5 justify-content-center mt-3">
         <div class="col-12 col-md-8">
-          <form action="funciones/compraCliente.php" method="post">
+          <form action="funciones/cliente.php" method="post">
             <label>Dirección de envío</label>
             <input type="text" name="direccion" class="form-control" required>
         </div>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="w-100">
-              <button type="submit" name="comprar" class="btn w-100 btn-primary my-4">Realizar compra</button>
+              <button type="submit" name="accion" value="confirmarCompra" class="btn w-100 btn-primary my-4">Realizar compra</button>
             </div>
             <!--<div class="float-right mt-3 mb-1">
               <span class="small pr-1">Captcha: </span><img src="templates/captcha-img.php" class="captcha-img">

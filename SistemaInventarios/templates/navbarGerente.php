@@ -1,12 +1,24 @@
 <?php
 	require('funciones/db.php');
+	date_default_timezone_set("America/Mexico_City");
 	session_start();
 	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 1) {
     header("Location: inicioSesion.php");
   }
-
-
 ?>
+
+<style>
+	.scroll{
+		height: auto;
+		max-height: 250px;
+		overflow-x: hidden;
+	}
+	.sidebar-left{
+		position: sticky;
+		overflow-x: hidden;
+    overflow-y: auto;
+	}
+</style>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <span class="navbar-brand text-light">Gerente</span>
@@ -57,74 +69,119 @@
       </li>
 
 
-			<!-- NOTIFICACIONES -->
 
 			<li class="nav-item dropdown pr-4">
         <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-					<img src="img/ico/reo.png">
-					<span class=" text-light ml-1">Notificaciones</span>
+					<img src="img/ico/not.png">
+					<span class=" text-light ml-1">Ordenes de compra</span>
+
 					<?php
-						$consultaProductos = "SELECT compra.id, compra.idProducto, compra.estado, compra.fecha, producto.nombre FROM `compra` JOIN producto ON compra.idProducto = producto.id WHERE compra.estado = 1 LIMIT 4";
-						$resultado = $conn->query($consultaProductos);
-						$cantidadProductos = mysqli_num_rows($resultado);
-					?>
-						<?php
-						 	if ($cantidadProductos<=4) {
-								echo '<span class="badge badge-pill badge-danger">';
-								echo '</span>';
-						 	}
-						?>
+						$pendientes=0;
+						$consultaCompras = "SELECT * FROM comprainsumos";
+						if($resultado1=$conn->query($consultaCompras)){
+							while ($compra=$resultado1->fetch_assoc()) {
+								$fechaActual=date("Y-m-d H:i:s");
+								if ($fechaActual>$compra[fechaEntrega]) {
+									if ($compra[estado]==0) {
+										$pendientes++;
+									}
 
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <div class="dropdown-item">
-            <h6>Ultimas salidas autorizadas</h6>
-						<nav>
-							<?php
-								while($f=mysqli_fetch_array($resultado)){
-									echo "<p>";
-									echo "ID: " . $f['id'];
-									echo " - Producto: " . $f['nombre'];
-									echo "</p>";
 								}
-							?>
 
-						</nav>
-          </div>
-        </div>
+							}
+						}
+
+						if ($pendientes>0) {
+					?>
+					<span class="badge badge-pill badge-danger"><?php echo $pendientes ?></span>
+					<?php
+						}
+					?>
+        </a>
+
+				<div class="dropdown-menu dropdown-menu-right">
+				<?php
+				if ($pendientes>0) {
+					$consultaCompras = "SELECT * FROM comprainsumos";
+					if($resultado1=$conn->query($consultaCompras)){
+						while ($compra=$resultado1->fetch_assoc()) {
+							$fechaActual=date("Y-m-d H:i:s");
+							if ($fechaActual>$compra[fechaEntrega]) {
+								if ($compra[estado]==0) {
+
+
+				?>
+					<div class="dropdown-item">
+						<a href="g-registroInsumos.php">
+							<h6>Orden (ID:<?php echo $compra[id]; ?>) ha llegado</h6>
+							<p class="text-muted">Fecha y hora de llegada: <?php echo $compra[fechaEntrega] ?></p>
+
+						</a>
+					</div>
+					<div class="dropdown-divider"></div>
+				<?php
+								}
+
+							}
+
+						}
+					}
+				}
+				else {
+				?>
+					<div class="dropdown-item">
+						<h6>No hay ordenes pendientes</h6>
+					</div>
+				<?php
+				}
+				?>
+				</div>
+
+
+
+
       </li>
-			<!-- FIN DROPDOWN REORDEN -->
 
 
-			<!-- DROPWODWN DE PUNTO DE REORDEN-->
 
 			<li class="nav-item dropdown pr-4">
         <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
 					<img src="img/ico/reo.png">
 					<span class=" text-light ml-1">Punto de reorden</span>
 					<?php
-						$consultaProductos = "SELECT * FROM almacenproductos";
-						$resultado = $conn->query($consultaProductos);
-						$cantidadProductos = mysqli_num_rows($resultado);
-					?>
+						$consultaInsumos = "SELECT * FROM almaceninsumos";
+						$resultado = $conn->query($consultaInsumos);
+						$cantidadInsumos = mysqli_num_rows($resultado);
 
-						<?php
-						 	if ($cantidadProductos<=10) {
-								echo '<span class="badge badge-pill badge-danger">';
-								echo "1";
-								echo '</span>';
-						 	}
-						?>
+						if ($cantidadInsumos<=10) {
+							echo '<span class="badge badge-pill badge-danger">';
+							echo "1";
+							echo '</span>';
+						}
+					?>
 
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-				  <div class="dropdown-item">
-            <h6>REORDEN: </h6>
-            <p class="text-muted">El almacen cuenta con <?php echo $cantidadProductos ?>/10 productos</p>
+					<?php
+						if ($cantidadInsumos<=10){
+					?>
+          <div class="dropdown-item">
+            <h6>Punto de reorden</h6>
+            <p>El almacen cuenta con 10 o menos insumos (<?php echo $cantidadInsumos ?>)</p>
+						<a href="s-ordenProduccion.php" class="mb-4">> Generar una nueva orden de producción</a>
+						<!--<p class="text-muted">> Generar una nueva orden de producción</p>-->
           </div>
+					<?php
+						}
+						else{
+					?>
+          <div class="dropdown-item">
+            <h6>¡Todo normal!</h6>
+            <p class="text-muted">El almacen cuenta con <?php echo $cantidadInsumos ?> insumos</p>
+          </div>
+					<?php } ?>
         </div>
       </li>
-			<!-- FIN DROPDOWN REORDEN -->
 
       <li class="nav-item">
         <a class="nav-link" href="funciones/cerrarSesion.php">Cerrar sesión</a>

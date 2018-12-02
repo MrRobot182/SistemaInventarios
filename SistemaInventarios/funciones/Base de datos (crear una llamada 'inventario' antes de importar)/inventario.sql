@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8080
--- Tiempo de generación: 29-11-2018 a las 09:41:05
+-- Tiempo de generación: 02-12-2018 a las 10:13:34
 -- Versión del servidor: 5.6.34-log
 -- Versión de PHP: 7.2.1
 
@@ -40,8 +40,42 @@ CREATE TABLE `almaceninsumos` (
 --
 
 INSERT INTO `almaceninsumos` (`id`, `idInsumo`, `ubicacion`, `fechaAlta`) VALUES
-(4, 1, 1, '2014-04-08 11:53:11'),
-(5, 1, 1, '2014-04-17 11:53:11');
+(28, 2, 3, '2014-04-08 11:53:11'),
+(29, 2, 3, '2014-04-08 11:53:11'),
+(31, 2, 1, '2014-04-08 11:53:11'),
+(35, 2, 1, '2014-04-08 11:53:11'),
+(49, 1, 1, '2018-12-02 02:08:34'),
+(50, 1, 1, '2018-12-02 02:08:34'),
+(55, 1, 1, '2018-12-02 03:32:09'),
+(56, 1, 1, '2018-12-02 03:32:09'),
+(57, 1, 1, '2018-12-02 03:32:09'),
+(58, 1, 1, '2018-12-02 03:32:09'),
+(59, 1, 1, '2018-12-02 03:32:09'),
+(60, 1, 1, '2018-12-02 03:32:11'),
+(61, 1, 1, '2018-12-02 03:32:11'),
+(62, 1, 1, '2018-12-02 03:32:11'),
+(63, 1, 1, '2018-12-02 03:32:11'),
+(64, 1, 1, '2018-12-02 03:32:11'),
+(65, 1, 1, '2018-12-02 03:32:11'),
+(66, 1, 1, '2018-12-02 03:32:11'),
+(67, 1, 1, '2018-12-02 03:32:11'),
+(68, 1, 1, '2018-12-02 03:32:11'),
+(69, 1, 1, '2018-12-02 03:32:11'),
+(70, 1, 1, '2018-12-02 03:32:12'),
+(71, 1, 1, '2018-12-02 03:32:12'),
+(72, 1, 1, '2018-12-02 03:32:12'),
+(73, 1, 1, '2018-12-02 03:32:12'),
+(74, 1, 1, '2018-12-02 03:32:12'),
+(75, 1, 1, '2018-12-02 03:32:12'),
+(76, 1, 1, '2018-12-02 03:32:13'),
+(77, 1, 1, '2018-12-02 03:32:13'),
+(78, 1, 1, '2018-12-02 03:32:13'),
+(79, 1, 3, '2018-12-02 03:46:38'),
+(80, 1, 3, '2018-12-02 03:46:38'),
+(81, 1, 3, '2018-12-02 03:46:38'),
+(82, 1, 1, '2018-12-02 03:46:51'),
+(83, 1, 1, '2018-12-02 03:46:51'),
+(84, 1, 1, '2018-12-02 03:46:51');
 
 -- --------------------------------------------------------
 
@@ -63,13 +97,15 @@ CREATE TABLE `almacenproductos` (
 --
 
 INSERT INTO `almacenproductos` (`id`, `idProducto`, `ubicacion`, `fechaAlta`, `talla`, `color`) VALUES
-(18, 5, 2, '2018-11-26 01:20:24', 'C', 'AZUL'),
-(19, 5, 2, '2018-11-26 01:20:24', 'C', 'AZUL'),
-(20, 5, 1, '2018-11-26 01:21:13', 'M', 'ROJO'),
-(21, 5, 1, '2018-11-26 01:21:13', 'M', 'ROJO'),
-(22, 6, 1, '2018-11-26 01:23:58', 'C', 'ROJO'),
-(35, 5, 1, '2018-11-26 08:55:03', 'C', 'ROJO'),
-(36, 6, 1, '2018-11-26 18:24:23', 'C', 'ROJO');
+(18, 5, 3, '2018-11-26 01:20:24', 'C', 'AZUL'),
+(19, 5, 3, '2018-11-26 01:20:24', 'C', 'AZUL'),
+(21, 5, 3, '2018-11-26 01:21:13', 'M', 'ROJO'),
+(44, 5, 2, '2018-11-30 08:07:05', 'C', 'ROJO'),
+(47, 5, 2, '2018-11-30 08:07:05', 'C', 'ROJO'),
+(48, 5, 2, '2018-11-30 08:07:05', 'C', 'ROJO'),
+(49, 5, 2, '2018-11-30 08:07:05', 'C', 'ROJO'),
+(50, 5, 2, '2018-11-30 08:07:05', 'C', 'ROJO'),
+(51, 5, 1, '2018-11-30 08:07:05', 'C', 'ROJO');
 
 -- --------------------------------------------------------
 
@@ -116,15 +152,10 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`id`, `idCliente`, `idProducto`, `cantidad`, `color`, `talla`, `importe`, `fecha`, `direccion`, `estado`) VALUES
-(3, 1, 6, 1, 'ROJO', 'M', 29.00, '2018-11-14 15:30:42', 'CASA', 1),
-(4, 1, 6, 5, 'ROJO', 'M', 29.00, '2018-11-14 18:30:42', 'CASA', 0),
-(6, 1, 5, 1, 'AZUL', 'C', 29.00, '2018-11-14 18:30:42', 'CASA', 1),
-(7, 1, 5, 1, 'AZUL', 'C', 29.00, '2018-11-14 18:30:24', 'CASA', 1),
-(8, 2, 6, 4, 'ROJO', 'C', 8.00, '2018-11-29 03:23:23', 'dkajdskasjdk', 0),
-(9, 2, 7, 5, 'ROJO', 'C', 502.80, '2018-11-29 03:23:23', 'dkajdskasjdk', 0),
-(10, 2, 6, 2, 'ROJO', 'C', 4.00, '2018-11-29 03:32:13', 'dlaskdl', 0),
-(11, 2, 5, 1, 'ROJO', 'C', 391.20, '2018-11-29 03:32:45', 'ksdfkdsj', 0),
-(12, 2, 6, 1, 'AZUL', 'M', 2.00, '2018-11-29 03:32:45', 'ksdfkdsj', 0);
+(10, 2, 6, 2, 'ROJO', 'C', 4.00, '2018-11-29 03:32:13', 'dlaskdl', 1),
+(16, 2, 7, 2, 'ROJO', 'C', 201.12, '2018-12-02 02:44:56', 'das', 0),
+(17, 1, 6, 1, 'ROJO', 'C', 2.00, '2018-12-02 04:11:48', 'daskjdk', 0),
+(20, 1, 5, 3, 'ROJO', 'C', 1173.60, '2018-12-02 04:13:14', 'kaskj', 0);
 
 -- --------------------------------------------------------
 
@@ -138,8 +169,23 @@ CREATE TABLE `comprainsumos` (
   `idProveedor` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `importe` decimal(10,2) NOT NULL,
+  `fechaCompra` datetime NOT NULL,
+  `fechaEntrega` datetime NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comprainsumos`
+--
+
+INSERT INTO `comprainsumos` (`id`, `idInsumo`, `idProveedor`, `cantidad`, `importe`, `fechaCompra`, `fechaEntrega`, `estado`) VALUES
+(6, 1, 3, 6, 60.00, '2018-12-02 01:46:15', '2018-12-02 01:50:15', 1),
+(7, 1, 3, 4, 40.00, '2018-12-02 01:46:19', '2018-12-02 01:50:19', 1),
+(8, 1, 3, 9, 90.00, '2018-12-02 02:15:18', '2018-12-02 02:19:18', 1),
+(9, 1, 3, 10, 100.00, '2018-12-02 03:14:46', '2018-12-02 03:18:46', 1),
+(10, 1, 3, 5, 50.00, '2018-12-02 03:18:19', '2018-12-02 03:22:19', 1),
+(11, 1, 3, 3, 30.00, '2018-12-02 03:36:50', '2018-12-02 03:40:50', 1),
+(12, 1, 3, 3, 30.09, '2018-12-02 03:45:04', '2018-12-02 03:46:04', 1);
 
 -- --------------------------------------------------------
 
@@ -231,7 +277,9 @@ INSERT INTO `ordenproduccion` (`id`, `idInsumo`, `idProducto`, `cantidad`, `cant
 (28, 1, 5, 2, 4, 'ROJO', 'M', 1, '2018-11-26 01:21:13'),
 (29, 2, 6, 1, 1, 'ROJO', 'C', 1, '2018-11-26 01:23:58'),
 (30, 1, 5, 1, 1, 'ROJO', 'C', 1, '2018-11-26 08:55:03'),
-(31, 2, 6, 1, 1, 'ROJO', 'C', 1, '2018-11-26 18:24:23');
+(31, 2, 6, 1, 1, 'ROJO', 'C', 1, '2018-11-26 18:24:23'),
+(32, 1, 7, 5, 10, 'ROJO', 'C', 3, '2018-11-30 07:53:15'),
+(33, 1, 5, 10, 10, 'ROJO', 'C', 1, '2018-11-30 08:07:05');
 
 -- --------------------------------------------------------
 
@@ -279,7 +327,7 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`id`, `nombre`, `idInsumo`, `costo`, `maximo`, `minimo`, `tiempoEntrega`) VALUES
-(2, 'TELAS DE LA ABUELA', 2, 2.12, 10, 8, 1);
+(3, 'TELAS DE LA ABUELA 1', 1, 10.03, 10, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -298,7 +346,8 @@ CREATE TABLE `salidasgerente` (
 --
 
 INSERT INTO `salidasgerente` (`id`, `tipo`, `idObjeto`) VALUES
-(9, 1, 22);
+(17, 0, 33),
+(18, 0, 29);
 
 --
 -- Índices para tablas volcadas
@@ -388,12 +437,12 @@ ALTER TABLE `salidasgerente`
 -- AUTO_INCREMENT de la tabla `almaceninsumos`
 --
 ALTER TABLE `almaceninsumos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT de la tabla `almacenproductos`
 --
 ALTER TABLE `almacenproductos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
@@ -403,12 +452,12 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `comprainsumos`
 --
 ALTER TABLE `comprainsumos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
@@ -423,7 +472,7 @@ ALTER TABLE `insumo`
 -- AUTO_INCREMENT de la tabla `ordenproduccion`
 --
 ALTER TABLE `ordenproduccion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
@@ -433,12 +482,12 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `salidasgerente`
 --
 ALTER TABLE `salidasgerente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Restricciones para tablas volcadas
 --

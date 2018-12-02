@@ -237,15 +237,26 @@
     public function eliminarProveedor(){
       $this->pvr->setId($_POST["idel"]);
       $id = $this->pvr->getId();
+      $comprobarCompras = "SELECT * FROM comprainsumos WHERE idProveedor='$id'";
+      $resultado = $this->connS->query($comprobarCompras);
+      $count = mysqli_num_rows($resultado);
 
-      $eliminar = "DELETE FROM proveedor WHERE id='$id'";
-      if ($this->connS->query($eliminar)) {
-        header("Location: ../s-editaProveedores.php?msj=eliminado");
+      if ($count > 0) {
+        header("Location: ../s-editaProveedores.php?error=compras");
       }
       else {
-        header("Location: ../s-editaProveedores.php?error=eliminacion");
+        $eliminar = "DELETE FROM proveedor WHERE id='$id'";
+        $this->connS->query($eliminar);
+        $eliminado = $this->connS->affected_rows;
+
+        if ($eliminado == 1) {
+          header("Location: ../s-editaProveedores.php?msj=eliminado");
+        }
+        else {
+          header("Location: ../s-editaProveedores.php?error=eliminacion");
+        }
+        $this->connS->close();
       }
-      $this->connS->close();
     }
 
     public function registrarProdTerm(){
