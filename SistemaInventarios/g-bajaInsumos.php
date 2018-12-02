@@ -18,10 +18,6 @@
     if ($msj == "varNoDefinidas") {
       echo "<script>alert('Error. Faltan datos.');</script>";
     }
-
-
-
-
   }
 ?>
       <div class="col-12 col-md-9 col-lg-10 px-4 px-sm-5 pt-4 sidebar-left ">
@@ -31,22 +27,11 @@
           <hr>
           <div class="rounded bg-light mx-auto p-2 mb-5">
             <form class="" action="funciones/bajaInsumos.php" method="post">
-              <label class="mt-1">Tipo de insumo: </label>
-              <select class="custom-select" name="insumo" required>
+              <label class="mt-1">Insumo: </label>
+              <select class="custom-select" name="idInsumo" required>
                 <option value="">Seleccionar</option>
-                <?php consultaAlmacenInsumos(); ?>
+                <?php consultaBajaInsumos(); ?>
               </select>
-              <label class="mt-2">Ubicación: </label>
-              <select class="custom-select" name="ubicacion" required>
-                <option value="1">Estante 1</option>
-                <option value="2">Estante 2</option>
-                <option value="3">Estante 3</option>
-              </select>
-              <div class="form-row">
-                <div class="col">
-                  <label class="mt-2">Cantidad a restar: </label><input type="number" class="form-control" name="cantidad" min="1" required>
-                </div>
-              </div>
               <input type="submit" name="" value="Registrar" class="btn btn-primary w-100 mt-4 mb-2" data-toggle="modal" data-target="#modalAut">
               </form>
           </div>
