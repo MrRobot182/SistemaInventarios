@@ -1,7 +1,7 @@
 <?php
+	session_start();
 	require('funciones/db.php');
 	date_default_timezone_set("America/Mexico_City");
-	session_start();
 	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 1) {
     header("Location: inicioSesion.php");
   }

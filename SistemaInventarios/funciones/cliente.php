@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require("db.php");
   require("productoTerminado.php");
   date_default_timezone_set("America/Mexico_City");
@@ -29,7 +30,7 @@
 
         echo $idProducto." ".$precio." ".$talla." ".$color." ".$cantidad." ".$importe;
 
-        session_start();
+
 
         if (in_array($idProducto, $_SESSION[idProducto])) {
           header("Location: ../carrito.php?msj=ya_agregado");
@@ -54,7 +55,6 @@
       }
       else {
         $indice = $_POST['indice'];
-        session_start();
         unset($_SESSION[producto][$indice]);
         unset($_SESSION[idProducto][$indice]);
         unset($_SESSION[cantidad][$indice]);
@@ -66,7 +66,6 @@
     }
 
     public function confirmarCompra(){
-      session_start();
       if (!isset($_POST['comprar']) && !isset($_POST['direccion']) && !isset($_POST['captcha'])) {
         header("Location: ../productos.php");
       }
@@ -115,7 +114,6 @@
       }
       else {
         $cancelar = $_POST['cancelar'];
-        session_start();
         $consultaId = "SELECT id FROM cliente WHERE correo='$_SESSION[usuario]'";
         $resultado = $this->connC->query($consultaId);
         $cliente = $resultado->fetch_assoc();

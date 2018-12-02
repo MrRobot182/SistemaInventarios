@@ -1,6 +1,6 @@
 <?php
-  require("db.php");
   session_start();
+  require("db.php");
   if ($_SESSION["captcha"] == $_POST["captcha"]) {
     $name = strtoupper($_POST["nombre"]);
     $email = $_POST["email"];

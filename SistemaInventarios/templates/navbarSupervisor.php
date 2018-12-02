@@ -1,6 +1,6 @@
 <?php
-	require('funciones/db.php');
 	session_start();
+	require('funciones/db.php');
 	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 2) {
     header("Location: inicioSesion.php");
   }
@@ -116,52 +116,7 @@
           </div>
 					<?php } ?>
         </div>
-      </li>
-
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="img/ico/not.png">
-          <span class="d-md-none pr-1">Notificaciones</span>
-					<span class="badge badge-pill badge-danger">0</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right scroll">
-          <div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-					<div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-          <div class="dropdown-divider"></div>
-
-          <div class="dropdown-item">
-            <h6>Salida pendiente</h6>
-            <p class="text-nowrap text-primary">Insumos - Tipo A: X</p>
-            <p class="text-muted">01/01/2019 - 00:00</p>
-          </div>
-
-        </div>
-      </li>-->
-
+      </li>  
 
       <li class="nav-item">
         <a class="nav-link" href="funciones/cerrarSesion.php">Cerrar sesión</a>

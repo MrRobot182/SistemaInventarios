@@ -1,6 +1,6 @@
 <?php
-  require("db.php");
   session_start();
+  require("db.php");
   if ($_SESSION["captcha"] == $_POST["captcha"]) {
     $email = $_POST["email"];
     $pass = $_POST["pass"];
@@ -21,7 +21,6 @@
       }
 
       if($email == $emailok && $pass == $passok) {
-        session_start();
         $_SESSION["logueado"] = TRUE;
         $_SESSION["tipoUsuario"] = $idUsuario;
         if ($idUsuario == 1) {

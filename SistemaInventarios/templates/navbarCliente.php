@@ -1,6 +1,6 @@
 <?php
-	require('funciones/db.php');
 	session_start();
+	require('funciones/db.php');
 	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 3) {
     header("Location: inicioSesion.php");
   }

@@ -1,10 +1,9 @@
 <?php
-
+  session_start();
   header("Content-type: image/png");
   $img = @imagecreatetruecolor(110,32);
   $bgcolor = imagecolorallocate($img,102,102,153);
   $letracolor = imagecolorallocate($img,255,255,255);
-  session_start();
   $captcha='';
   for ($i=15; $i<95; $i+=20) {
     $captcha.=($num=rand(0,9));
