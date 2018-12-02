@@ -22,9 +22,9 @@
           <div class="mx-auto" style="width:80%">
 
             <form class="mb-5" action="funciones/cliente.php" method="post">
-              <input type="hidden" name="idp" value="<?php echo $producto[id]?>">
-              <input type="hidden" name="nombrep" value="<?php echo $producto[nombre]?>">
-              <input type="hidden" name="precio" value="<?php echo $producto[precio]?>">
+              <input type="hidden" name="idp" value="<?php echo $producto['id']?>">
+              <input type="hidden" name="nombrep" value="<?php echo $producto['nombre']?>">
+              <input type="hidden" name="precio" value="<?php echo $producto['precio']?>">
               <div class="form-row mt-4">
                 <div class="col">
                   <label>Talla: </label>
@@ -76,12 +76,12 @@
             <img src="img/bg.jpeg" class="rounded mx-auto img-fluid mt-1">
           </div>-->
           <div class="card mx-auto mb-4 w-75"><!-- style="width: 100%;"-->
-            <img class="card-img-top img-card mx-auto py-2" src="<?php echo $producto[img];?>">
+            <img class="card-img-top img-card mx-auto py-2" src="<?php echo $producto['img'];?>">
             <div class="card-body border-top bg-light">
-              <h5 class="card-title"><?php echo $producto[nombre];?></h5>
-              <p class="card-text">Descripción: <?php echo $producto[descripcion];?></p>
-              <p class="card-text text-muted">Material: <?php echo $producto[nombreInsumo];?></p>
-              <h3 class="card-text float-right">$<?php echo $producto[precio];?></h3>
+              <h5 class="card-title"><?php echo $producto['nombre'];?></h5>
+              <p class="card-text">Descripción: <?php echo $producto['descripcion'];?></p>
+              <p class="card-text text-muted">Material: <?php echo $producto['nombreInsumo'];?></p>
+              <h3 class="card-text float-right">$<?php echo $producto['precio'];?></h3>
             </div>
           </div>
         </div>

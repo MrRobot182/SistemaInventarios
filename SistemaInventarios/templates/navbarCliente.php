@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require('funciones/db.php');
-	if($_SESSION["logueado"] != TRUE || $_SESSION["tipoUsuario"] != 3) {
+	if($_SESSION['logueado'] != TRUE || $_SESSION['tipoUsuario'] != 3) {
     header("Location: inicioSesion.php");
   }
 ?>
@@ -28,7 +28,7 @@
               <a class="nav-link text-light mr-3" href="carrito.php">
 								<img src="img/ico/carrito.png">
 								<span class="d-md-none ml-3">Carrito de compras</span>
-								<span class="badge badge-danger"><?php echo count($_SESSION[producto]) ?></span>
+								<span class="badge badge-danger"><?php echo count($_SESSION['producto']) ?></span>
 							</a>
             </li>
 

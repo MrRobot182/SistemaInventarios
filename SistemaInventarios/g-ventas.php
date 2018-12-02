@@ -33,18 +33,18 @@
                 if($resultado=$conn->query($consultaCompras)){
                   while ($compra=mysqli_fetch_array($resultado)) {
                     echo "<tr>";
-                    echo '<td>'.$compra[id].'</td>';
-                    echo '<td>'.$compra[correo].'</td>';
-                    echo '<td>'.$compra[nombre].'</td>';
-                    echo '<td>'.$compra[cantidad].'</td>';
-                    echo '<td>'.$compra[color].'</td>';
-                    echo '<td>'.$compra[talla].'</td>';
-                    echo '<td>$'.$compra[importe].'</td>';
-                    echo '<td>'.$compra[fecha].'</td>';
-                    if ($compra[estado] == 0) {
+                    echo '<td>'.$compra['id'].'</td>';
+                    echo '<td>'.$compra['correo'].'</td>';
+                    echo '<td>'.$compra['nombre'].'</td>';
+                    echo '<td>'.$compra['cantidad'].'</td>';
+                    echo '<td>'.$compra['color'].'</td>';
+                    echo '<td>'.$compra['talla'].'</td>';
+                    echo '<td>$'.$compra['importe'].'</td>';
+                    echo '<td>'.$compra['fecha'].'</td>';
+                    if ($compra['estado'] == 0) {
                       echo '<td>Pendiente</td>';
                     }
-                    else if ($compra[estado] == 1){
+                    else if ($compra['estado'] == 1){
                       echo '<td>Entregado</td>';
                     }
                     echo "</tr>";

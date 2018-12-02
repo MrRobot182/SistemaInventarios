@@ -22,7 +22,7 @@
                       $consultaInsumos = "SELECT * FROM insumo";
                       if($resultado=$conn->query($consultaInsumos)){
                         while ($insumo=mysqli_fetch_array($resultado)) {
-                          echo '<option value="'.$insumo[id].'">'.$insumo[nombre].'</option>';
+                          echo '<option value="'.$insumo['id'].'">'.$insumo['nombre'].'</option>';
                         }
                       }
                       $conn->close();

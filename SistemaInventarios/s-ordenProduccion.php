@@ -19,7 +19,7 @@
                       $consultaProductos = "SELECT * FROM producto";
                       if($resultado=$conn->query($consultaProductos)){
                         while ($producto=$resultado->fetch_assoc()) {
-                          echo '<option value="'.$producto[id].'">'.$producto[nombre].'</option>';
+                          echo '<option value="'.$producto['id'].'">'.$producto['nombre'].'</option>';
                         }
                       }
                     ?>
@@ -63,11 +63,11 @@
                   $consultaInsumos = "SELECT * FROM insumo";
                   $resultado = $conn->query($consultaInsumos);
                   while ($insumo = $resultado->fetch_assoc()) {
-                    $insumosAlmacen = "SELECT * FROM almaceninsumos WHERE idInsumo='$insumo[id]'";
+                    $insumosAlmacen = "SELECT * FROM almaceninsumos WHERE idInsumo=".$insumo['id']."";
                     $resultado1 = $conn->query($insumosAlmacen);
                     $count = mysqli_num_rows($resultado1);
                     echo '<div class="col">';
-                    echo '<label class="mt-2 text-muted">Insumos ('.$insumo[nombre].') disponibles:</label>';
+                    echo '<label class="mt-2 text-muted">Insumos ('.$insumo['nombre'].') disponibles:</label>';
                     echo '<input type="text" class="form-control" value="'.$count.'" readonly>';
                     echo '</div>';
                   }
@@ -125,15 +125,15 @@
           if($resultado=$conn->query($consultaOrdenes)){
             while ($orden=mysqli_fetch_array($resultado)) {
               echo "<tr>";
-              echo '<td>'.$orden[id].'</td>';
-              echo '<td>'.$orden[pnombre].'</td>';
-              echo '<td>'.$orden[inombre].'</td>';
-              echo '<td>'.$orden[cantidad].'</td>';
-              echo '<td>'.$orden[cantidadInsumos].'</td>';
-              echo '<td>'.$orden[color].'</td>';
-              echo '<td>'.$orden[talla].'</td>';
-              echo '<td>'.$orden[ubicacion].'</td>';
-              echo '<td>'.$orden[fecha].'</td>';
+              echo '<td>'.$orden['id'].'</td>';
+              echo '<td>'.$orden['pnombre'].'</td>';
+              echo '<td>'.$orden['inombre'].'</td>';
+              echo '<td>'.$orden['cantidad'].'</td>';
+              echo '<td>'.$orden['cantidadInsumos'].'</td>';
+              echo '<td>'.$orden['color'].'</td>';
+              echo '<td>'.$orden['talla'].'</td>';
+              echo '<td>'.$orden['ubicacion'].'</td>';
+              echo '<td>'.$orden['fecha'].'</td>';
               echo "</tr>";
             }
           }
@@ -165,12 +165,12 @@
           if($resultado1=$conn->query($consultaAlmacenP)){
             while ($productoAlmacen=mysqli_fetch_array($resultado1)) {
               echo "<tr>";
-              echo '<td>'.$productoAlmacen[id].'</td>';
-              echo '<td>'.$productoAlmacen[nombre].'</td>';
-              echo '<td>'.$productoAlmacen[ubicacion].'</td>';
-              echo '<td>'.$productoAlmacen[talla].'</td>';
-              echo '<td>'.$productoAlmacen[color].'</td>';
-              echo '<td>'.$productoAlmacen[fechaAlta].'</td>';
+              echo '<td>'.$productoAlmacen['id'].'</td>';
+              echo '<td>'.$productoAlmacen['nombre'].'</td>';
+              echo '<td>'.$productoAlmacen['ubicacion'].'</td>';
+              echo '<td>'.$productoAlmacen['talla'].'</td>';
+              echo '<td>'.$productoAlmacen['color'].'</td>';
+              echo '<td>'.$productoAlmacen['fechaAlta'].'</td>';
               echo "</tr>";
             }
           }

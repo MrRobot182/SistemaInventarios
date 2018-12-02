@@ -27,12 +27,12 @@
             if($resultado=$conn->query($consultaAlmacenP)){
               while ($productoAlmacen=mysqli_fetch_array($resultado)) {
                 echo "<tr>";
-                echo '<td>'.$productoAlmacen[id].'</td>';
-                echo '<td>'.$productoAlmacen[nombre].'</td>';
-                echo '<td>'.$productoAlmacen[ubicacion].'</td>';
-                echo '<td>'.$productoAlmacen[talla].'</td>';
-                echo '<td>'.$productoAlmacen[color].'</td>';
-                echo '<td>'.$productoAlmacen[fechaAlta].'</td>';
+                echo '<td>'.$productoAlmacen['id'].'</td>';
+                echo '<td>'.$productoAlmacen['nombre'].'</td>';
+                echo '<td>'.$productoAlmacen['ubicacion'].'</td>';
+                echo '<td>'.$productoAlmacen['talla'].'</td>';
+                echo '<td>'.$productoAlmacen['color'].'</td>';
+                echo '<td>'.$productoAlmacen['fechaAlta'].'</td>';
                 echo "</tr>";
               }
             }
@@ -63,10 +63,10 @@
             if($resultado=$conn->query($consultaAlmacenI)){
               while ($insumoAlmacen=mysqli_fetch_array($resultado)) {
                 echo "<tr>";
-                echo '<td>'.$insumoAlmacen[id].'</td>';
-                echo '<td>'.$insumoAlmacen[nombre].'</td>';
-                echo '<td>'.$insumoAlmacen[ubicacion].'</td>';
-                echo '<td>'.$insumoAlmacen[fechaAlta].'</td>';
+                echo '<td>'.$insumoAlmacen['id'].'</td>';
+                echo '<td>'.$insumoAlmacen['nombre'].'</td>';
+                echo '<td>'.$insumoAlmacen['ubicacion'].'</td>';
+                echo '<td>'.$insumoAlmacen['fechaAlta'].'</td>';
                 echo "</tr>";
               }
             }

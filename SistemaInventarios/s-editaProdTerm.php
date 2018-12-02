@@ -33,20 +33,20 @@
                 if($resultado=$conn->query($consultaProductos)){
                   while ($producto=mysqli_fetch_array($resultado)) {
                     echo '<tr>';
-                    echo '<td>'.$producto[id].'</td>';
-                    echo '<td>'.$producto[nombre].'</td>';
-                    echo '<td>'.$producto[descripcion].'</td>';
-                    echo '<td>'.$producto[insumo].'</td>';
-                    echo '<td>'.$producto[cantidadChico].'</td>';
-                    echo '<td>$'.$producto[precio].'</td>';
-                    //echo '<td>'.$producto[imagen].'</td>';
+                    echo '<td>'.$producto['id'].'</td>';
+                    echo '<td>'.$producto['nombre'].'</td>';
+                    echo '<td>'.$producto['descripcion'].'</td>';
+                    echo '<td>'.$producto['insumo'].'</td>';
+                    echo '<td>'.$producto['cantidadChico'].'</td>';
+                    echo '<td>$'.$producto['precio'].'</td>';
+                    //echo '<td>'.$producto['imagen'].'</td>';
                     //echo '<td><button type="button" class="btn btn-sm btn-secondary">Ver</button></td>';
-                    echo '<td><button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto[id].'">';
+                    echo '<td><button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#imagen-prod'.$producto['id'].'">';
                     echo 'Ver';
                     echo '</button></td>';
 
                     echo '
-                    <div class="modal fade" id="imagen-prod'.$producto[id].'">
+                    <div class="modal fade" id="imagen-prod'.$producto['id'].'">
                       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -55,7 +55,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <img src="'.$producto[img].'" width="100%">
+                            <img src="'.$producto['img'].'" width="100%">
                           </div>
                         </div>
                       </div>
@@ -63,7 +63,7 @@
 
                     echo '<td style="width: 8%">';
                     echo '<form action="s-editaProdTermSel.php" method="post">';
-                    echo '<button type="submit" name="id" value="'.$producto[id].'" class="btn btn-sm btn-primary">';
+                    echo '<button type="submit" name="id" value="'.$producto['id'].'" class="btn btn-sm btn-primary">';
                     echo 'Editar';
                     echo '</button>';
                     echo '</form>';
@@ -71,7 +71,7 @@
 
                     echo '<td style="width: 8%">';
                     echo '<form action="funciones/supervisor.php" method="post">';
-                    echo '<input type="hidden" name="idel" value="'.$producto[id].'">';
+                    echo '<input type="hidden" name="idel" value="'.$producto['id'].'">';
                     echo '<button type="submit" name="accion" value="eliminarProdTerm" class="btn btn-sm btn-danger">';
                     echo 'Eliminar';
                     echo '</button>';

@@ -81,8 +81,8 @@
 						if($resultado1=$conn->query($consultaCompras)){
 							while ($compra=$resultado1->fetch_assoc()) {
 								$fechaActual=date("Y-m-d H:i:s");
-								if ($fechaActual>$compra[fechaEntrega]) {
-									if ($compra[estado]==0) {
+								if ($fechaActual>$compra['fechaEntrega']) {
+									if ($compra['estado']==0) {
 										$pendientes++;
 									}
 
@@ -106,15 +106,15 @@
 					if($resultado1=$conn->query($consultaCompras)){
 						while ($compra=$resultado1->fetch_assoc()) {
 							$fechaActual=date("Y-m-d H:i:s");
-							if ($fechaActual>$compra[fechaEntrega]) {
-								if ($compra[estado]==0) {
+							if ($fechaActual>$compra['fechaEntrega']) {
+								if ($compra['estado']==0) {
 
 
 				?>
 					<div class="dropdown-item">
 						<a href="g-registroInsumos.php">
-							<h6>Orden (ID:<?php echo $compra[id]; ?>) ha llegado</h6>
-							<p class="text-muted">Fecha y hora de llegada: <?php echo $compra[fechaEntrega] ?></p>
+							<h6>Orden (ID:<?php echo $compra['id']; ?>) ha llegado</h6>
+							<p class="text-muted">Fecha y hora de llegada: <?php echo $compra['fechaEntrega'] ?></p>
 
 						</a>
 					</div>
@@ -168,7 +168,7 @@
           <div class="dropdown-item">
             <h6>Punto de reorden</h6>
             <p>El almacen cuenta con 10 o menos insumos (<?php echo $cantidadInsumos ?>)</p>
-						<a href="s-ordenProduccion.php" class="mb-4">> Generar una nueva orden de producción</a>
+						<a href="g-ordenarCompra.php" class="mb-4">> Generar una nueva orden de compra</a>
 						<!--<p class="text-muted">> Generar una nueva orden de producción</p>-->
           </div>
 					<?php

@@ -12,9 +12,9 @@
       if($resultado = $conn->query($consulta)) {
 
         while($row = $resultado->fetch_array()) {
-          $emailok = $row["correo"];
-          $passok = $row["password"];
-          $idUsuario = $row["id"];
+          $emailok = $row['correo'];
+          $passok = $row['password'];
+          $idUsuario = $row['id'];
         }
 
         $resultado->close();

@@ -27,7 +27,7 @@
                     if($resultado=$conn->query($consultaAlmacenP)){
                       while ($productoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $productoAlmacen[id] ?>"><?php echo $productoAlmacen[id].' - '.$productoAlmacen[nombre].' - '.$productoAlmacen[talla].' - '.$productoAlmacen[color] ?></option>
+                  <option value="<?php echo $productoAlmacen['id'] ?>"><?php echo $productoAlmacen['id'].' - '.$productoAlmacen['nombre'].' - '.$productoAlmacen['talla'].' - '.$productoAlmacen['color'] ?></option>
                   <?php
                       }
                     }
@@ -56,7 +56,7 @@
                     if($resultado=$conn->query($consultaAlmacenI)){
                       while ($insumoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $insumoAlmacen[id] ?>"><?php echo $insumoAlmacen[id].' - '.$insumoAlmacen[nombre]?></option>
+                  <option value="<?php echo $insumoAlmacen['id'] ?>"><?php echo $insumoAlmacen['id'].' - '.$insumoAlmacen['nombre']?></option>
                   <?php
                       }
                     }
@@ -95,7 +95,7 @@
                     if($resultado=$conn->query($consultaAlmacenP)){
                       while ($productoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $productoAlmacen[id] ?>"><?php echo $productoAlmacen[id].' - '.$productoAlmacen[nombre].' - '.$productoAlmacen[talla].' - '.$productoAlmacen[color] ?></option>
+                  <option value="<?php echo $productoAlmacen['id'] ?>"><?php echo $productoAlmacen['id'].' - '.$productoAlmacen['nombre'].' - '.$productoAlmacen['talla'].' - '.$productoAlmacen['color'] ?></option>
                   <?php
                       }
                     }
@@ -124,7 +124,7 @@
                     if($resultado=$conn->query($consultaAlmacenI)){
                       while ($insumoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $insumoAlmacen[id] ?>"><?php echo $insumoAlmacen[id].' - '.$insumoAlmacen[nombre]?></option>
+                  <option value="<?php echo $insumoAlmacen['id'] ?>"><?php echo $insumoAlmacen['id'].' - '.$insumoAlmacen['nombre']?></option>
                   <?php
                       }
                     }
@@ -163,7 +163,7 @@
                     if($resultado=$conn->query($consultaAlmacenP)){
                       while ($productoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $productoAlmacen[id] ?>"><?php echo $productoAlmacen[id].' - '.$productoAlmacen[nombre].' - '.$productoAlmacen[talla].' - '.$productoAlmacen[color] ?></option>
+                  <option value="<?php echo $productoAlmacen['id'] ?>"><?php echo $productoAlmacen['id'].' - '.$productoAlmacen['nombre'].' - '.$productoAlmacen['talla'].' - '.$productoAlmacen['color'] ?></option>
                   <?php
                       }
                     }
@@ -192,7 +192,7 @@
                     if($resultado=$conn->query($consultaAlmacenI)){
                       while ($insumoAlmacen=mysqli_fetch_array($resultado)) {
                   ?>
-                  <option value="<?php echo $insumoAlmacen[id] ?>"><?php echo $insumoAlmacen[id].' - '.$insumoAlmacen[nombre]?></option>
+                  <option value="<?php echo $insumoAlmacen['id'] ?>"><?php echo $insumoAlmacen['id'].' - '.$insumoAlmacen['nombre']?></option>
                   <?php
                       }
                     }

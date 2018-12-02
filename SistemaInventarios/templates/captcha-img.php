@@ -11,6 +11,6 @@
   }
   imagepng($img);
   imagedestroy($img);
-  $_SESSION["captcha"] = $captcha;
+  $_SESSION['captcha'] = $captcha;
 
 ?>

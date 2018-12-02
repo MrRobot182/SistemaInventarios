@@ -28,28 +28,28 @@
                 if($resultado=$conn->query($consultaCompras)){
                   while ($compra=mysqli_fetch_array($resultado)) {
                     echo "<tr>";
-                    echo '<td>'.$compra[id].'</td>';
-                    echo '<td>'.$compra[correo].'</td>';
-                    echo '<td>'.$compra[nombre].'</td>';
-                    echo '<td>'.$compra[cantidad].'</td>';
-                    echo '<td>'.$compra[color].'</td>';
-                    echo '<td>'.$compra[talla].'</td>';
-                    echo '<td>$'.$compra[importe].'</td>';
-                    echo '<td>'.$compra[fecha].'</td>';
-                    if ($compra[estado] == 0) {
+                    echo '<td>'.$compra['id'].'</td>';
+                    echo '<td>'.$compra['correo'].'</td>';
+                    echo '<td>'.$compra['nombre'].'</td>';
+                    echo '<td>'.$compra['cantidad'].'</td>';
+                    echo '<td>'.$compra['color'].'</td>';
+                    echo '<td>'.$compra['talla'].'</td>';
+                    echo '<td>$'.$compra['importe'].'</td>';
+                    echo '<td>'.$compra['fecha'].'</td>';
+                    if ($compra['estado'] == 0) {
                       echo '<td>';
                       echo '<form action="funciones/supervisor.php" method="post">';
-                      echo '<input type="hidden" name="idc" value="'.$compra[id].'">';
+                      echo '<input type="hidden" name="idc" value="'.$compra['id'].'">';
                       echo '<button type="submit" name="accion" value="autorizarSalida" class="btn btn-sm btn-primary">';
                       echo 'Autorizar';
                       echo '</button>';
                       echo '</form>';
                       echo '</td>';
                     }
-                    else if ($compra[estado] == 1){
+                    else if ($compra['estado'] == 1){
                       echo '<td>';
                       echo '<form action="funciones/supervisor.php" method="post">';
-                      echo '<input type="hidden" name="idc" value="'.$compra[id].'">';
+                      echo '<input type="hidden" name="idc" value="'.$compra['id'].'">';
                       echo '<button type="submit" name="accion" value="eliminarSalida" class="btn btn-sm btn-danger">';
                       echo 'Eliminar';
                       echo '</button>';
@@ -116,18 +116,18 @@
                     if($resultado=$conn->query($consultaSalidaP)){
                       while ($productoSalida=$resultado->fetch_assoc()) {
                         echo "<tr>";
-                        echo '<td>'.$productoSalida[id].'</td>';
-                        echo '<td>'.$productoSalida[idObjeto].'</td>';
-                        echo '<td>'.$productoSalida[nombre].'</td>';
-                        echo '<td>'.$productoSalida[ubicacion].'</td>';
-                        echo '<td>'.$productoSalida[talla].'</td>';
-                        echo '<td>'.$productoSalida[color].'</td>';
-                        echo '<td>'.$productoSalida[fechaAlta].'</td>';
+                        echo '<td>'.$productoSalida['id'].'</td>';
+                        echo '<td>'.$productoSalida['idObjeto'].'</td>';
+                        echo '<td>'.$productoSalida['nombre'].'</td>';
+                        echo '<td>'.$productoSalida['ubicacion'].'</td>';
+                        echo '<td>'.$productoSalida['talla'].'</td>';
+                        echo '<td>'.$productoSalida['color'].'</td>';
+                        echo '<td>'.$productoSalida['fechaAlta'].'</td>';
 
                         echo '<td style="width: 8%">';
                         echo '<form action="funciones/supervisor.php" method="post">';
-                        echo '<input type="hidden" name="ids" value="'.$productoSalida[id].'">';
-                        echo '<input type="hidden" name="ido" value="'.$productoSalida[idObjeto].'">';
+                        echo '<input type="hidden" name="ids" value="'.$productoSalida['id'].'">';
+                        echo '<input type="hidden" name="ido" value="'.$productoSalida['idObjeto'].'">';
                         echo '<button type="submit" name="accion" value="autorizarSalidaProducto" class="btn btn-sm btn-primary">';
                         echo 'Autorizar';
                         echo '</button>';
@@ -135,7 +135,7 @@
 
                         echo '<td style="width: 8%">';
                         echo '<form action="funciones/supervisor.php" method="post">';
-                        echo '<input type="hidden" name="ids" value="'.$productoSalida[id].'">';
+                        echo '<input type="hidden" name="ids" value="'.$productoSalida['id'].'">';
                         echo '<button type="submit" name="accion" value="eliminarSalidaProducto" class="btn btn-sm btn-danger">';
                         echo 'Eliminar';
                         echo '</button>';
@@ -187,16 +187,16 @@
                         if($resultado=$conn->query($consultaSalidaI)){
                           while ($insumoSalida=$resultado->fetch_assoc()) {
                             echo "<tr>";
-                            echo '<td>'.$insumoSalida[id].'</td>';
-                            echo '<td>'.$insumoSalida[idObjeto].'</td>';
-                            echo '<td>'.$insumoSalida[nombre].'</td>';
-                            echo '<td>'.$insumoSalida[ubicacion].'</td>';
-                            echo '<td>'.$insumoSalida[fechaAlta].'</td>';
+                            echo '<td>'.$insumoSalida['id'].'</td>';
+                            echo '<td>'.$insumoSalida['idObjeto'].'</td>';
+                            echo '<td>'.$insumoSalida['nombre'].'</td>';
+                            echo '<td>'.$insumoSalida['ubicacion'].'</td>';
+                            echo '<td>'.$insumoSalida['fechaAlta'].'</td>';
 
                             echo '<td style="width: 8%">';
                             echo '<form action="funciones/supervisor.php" method="post">';
-                            echo '<input type="hidden" name="ids" value="'.$insumoSalida[id].'">';
-                            echo '<input type="hidden" name="ido" value="'.$insumoSalida[idObjeto].'">';
+                            echo '<input type="hidden" name="ids" value="'.$insumoSalida['id'].'">';
+                            echo '<input type="hidden" name="ido" value="'.$insumoSalida['idObjeto'].'">';
                             echo '<button type="submit" name="accion" value="autorizarSalidaInsumo" class="btn btn-sm btn-primary">';
                             echo 'Autorizar';
                             echo '</button>';
@@ -204,7 +204,7 @@
 
                             echo '<td style="width: 8%">';
                             echo '<form action="funciones/supervisor.php" method="post">';
-                            echo '<input type="hidden" name="ids" value="'.$insumoSalida[id].'">';
+                            echo '<input type="hidden" name="ids" value="'.$insumoSalida['id'].'">';
                             echo '<button type="submit" name="accion" value="eliminarSalidaInsumo" class="btn btn-sm btn-danger">';
                             echo 'Eliminar';
                             echo '</button>';

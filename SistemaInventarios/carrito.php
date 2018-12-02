@@ -8,7 +8,7 @@
       <div class="row mx-1 mx-sm-5 justify-content-center mt-5">
         <div class="col-10">
           <?php
-            if (count($_SESSION[producto]) == 0) {
+            if (count($_SESSION['producto']) == 0) {
               echo '<div class="alert alert-danger w-100">No hay productos en carrito</div>';
             }
             else {
@@ -26,13 +26,13 @@
             </thead>
             <tbody>
           <?php
-            foreach ($_SESSION[producto] as $key => $value) {
+            foreach ($_SESSION['producto'] as $key => $value) {
               echo '<tr>';
-              echo '<td>'.$_SESSION[producto][$key].'</td>';
-              echo '<td>'.$_SESSION[talla][$key].'</td>';
-              echo '<td>'.$_SESSION[color][$key].'</td>';
-              echo '<td>'.$_SESSION[cantidad][$key].'</td>';
-              echo '<td>$'.$_SESSION[importe][$key].'</td>';
+              echo '<td>'.$_SESSION['producto'][$key].'</td>';
+              echo '<td>'.$_SESSION['talla'][$key].'</td>';
+              echo '<td>'.$_SESSION['color'][$key].'</td>';
+              echo '<td>'.$_SESSION['cantidad'][$key].'</td>';
+              echo '<td>$'.$_SESSION['importe'][$key].'</td>';
             ?>
               <td>
                 <form action="funciones/cliente.php" method="post">

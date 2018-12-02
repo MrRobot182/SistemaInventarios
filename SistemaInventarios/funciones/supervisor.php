@@ -24,24 +24,24 @@
       if ($resultado = $this->connS->query($compraSel)) {
 
         $compra = $resultado->fetch_assoc();
-        if ($compra[estado] == 1) {
+        if ($compra['estado'] == 1) {
           header("Location: ../s-autorizacionSalidas.php?msj=entregado");
         }
         //AUTORIZAR
         else {
-          $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=$compra[idProducto] AND talla='$compra[talla]' AND color='$compra[color]'";
+          $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=".$compra['idProducto']." AND talla=".$compra['talla']." AND color=".$compra['color']."";
           $resultado = $this->connS->query($consultaAlmacen);
           $count = mysqli_num_rows($resultado);
 
           if ($count >= $compra[cantidad]) {
-            $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=$compra[idProducto] AND talla='$compra[talla]' AND color='$compra[color]' ORDER BY fechaAlta ASC";
+            $consultaAlmacen = "SELECT * FROM almacenproductos WHERE idProducto=".$compra['idProducto']." AND talla=".$compra['talla']." AND color=".$compra['color']." ORDER BY fechaAlta ASC";
             //NO FUNCIONA LA CONSULTA CON LIMIT $compra[cantidad]
             $resultado = $this->connS->query($consultaAlmacen);
             for ($i=0; $i < $compra[cantidad]; $i++) {
               $idpeps = $resultado->fetch_assoc();
               /*echo $idpeps[idProducto]." ".$idpeps[talla]." ".$idpeps[color]." ".$idpeps[fechaAlta];
               echo "<hr>";*/
-              $eliminar = "DELETE FROM almacenproductos WHERE id='$idpeps[id]'";
+              $eliminar = "DELETE FROM almacenproductos WHERE id=".$idpeps['id']."";
               $this->connS->query($eliminar);
 
               $buscarSalidasGerente = "SELECT * FROM salidasgerente WHERE idObjeto='$idpeps'";
@@ -54,7 +54,7 @@
 
             }
 
-            $entregado = "UPDATE compra SET estado=1 WHERE id='$compra[id]'";
+            $entregado = "UPDATE compra SET estado=1 WHERE id=".$compra['id']."";
             $this->connS->query($entregado);
             header("Location: ../s-autorizacionSalidas.php?msj=autorizado");
 
@@ -81,7 +81,7 @@
       //VALIDACION DE ENTREGA
       if($resultado = $this->connS->query($entregado)){
         $compra = $resultado->fetch_assoc();
-        if ($compra[estado] == 1) {
+        if ($compra['estado'] == 1) {
           $eliminar = "DELETE FROM compra WHERE id='$id'";
           $this->connS->query($eliminar);
           header("Location: ../s-autorizacionSalidas.php?msj=eliminado");
@@ -379,16 +379,16 @@
 
             //Comprobar insumos en almacen
             if ($talla == 'C') {
-              $cantidadInsumos = $cantidad*$producto[cantidadChico];
+              $cantidadInsumos = $cantidad*$producto['cantidadChico'];
             }
             else if ($talla == 'M') {
-              $cantidadInsumos = 2*($cantidad*$producto[cantidadChico]);
+              $cantidadInsumos = 2*($cantidad*$producto['cantidadChico']);
             }
             else if ($talla == 'G') {
-              $cantidadInsumos = 3*($cantidad*$producto[cantidadChico]);
+              $cantidadInsumos = 3*($cantidad*$producto['cantidadChico']);
             }
 
-            $consultaInsumos = "SELECT * FROM almaceninsumos WHERE idInsumo='$producto[idInsumo]'";
+            $consultaInsumos = "SELECT * FROM almaceninsumos WHERE idInsumo=".$producto['idInsumo']."";
             $resultado=$this->connS->query($consultaInsumos);
             $insumosEnAlmacen = mysqli_num_rows($resultado);
 
@@ -400,7 +400,7 @@
               //Registrar orden
               $fecha = date("Y-m-d H:i:s");
               $registrarOrden = "INSERT INTO ordenproduccion (idInsumo,idProducto,cantidad,cantidadInsumos,color,talla,ubicacion,fecha) ";
-              $registrarOrden.= "VALUES ('$producto[idInsumo]','$producto[id]','$cantidad','$cantidadInsumos','$color','$talla','$ubicacion','$fecha')";
+              $registrarOrden.= "VALUES (".$producto['idInsumo'].",'$producto[id]','$cantidad','$cantidadInsumos','$color','$talla','$ubicacion','$fecha')";
               if ($this->connS->query($registrarOrden)) {
                 //Modificar almacen de insumos
                 $obtenerInsumos = "SELECT id FROM almaceninsumos WHERE idInsumo='$producto[idInsumo]' ORDER BY fechaAlta ASC";

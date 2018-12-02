@@ -33,24 +33,24 @@
                 if($resultado=$conn->query($consultaProveedores)){
                   while ($proveedor=mysqli_fetch_array($resultado)) {
                     echo "<tr>";
-                    echo '<td>'.$proveedor[id].'</td>';
-                    echo '<td>'.$proveedor[nombre].'</td>';
-                    echo '<td>'.$proveedor[nombreI].'</td>';
-                    echo '<td>$'.$proveedor[costo].'</td>';
-                    echo '<td>'.$proveedor[minimo].'</td>';
-                    echo '<td>'.$proveedor[maximo].'</td>';
-                    echo '<td>'.$proveedor[tiempoEntrega].' día/s</td>';
+                    echo '<td>'.$proveedor['id'].'</td>';
+                    echo '<td>'.$proveedor['nombre'].'</td>';
+                    echo '<td>'.$proveedor['nombreI'].'</td>';
+                    echo '<td>$'.$proveedor['costo'].'</td>';
+                    echo '<td>'.$proveedor['minimo'].'</td>';
+                    echo '<td>'.$proveedor['maximo'].'</td>';
+                    echo '<td>'.$proveedor['tiempoEntrega'].' día/s</td>';
 
-                    echo '<td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#comprar'.$proveedor[id].'">';
+                    echo '<td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#comprar'.$proveedor['id'].'">';
                     echo 'Comprar';
                     echo '</button></td>';
 
                     echo '
-                    <div class="modal fade" id="comprar'.$proveedor[id].'">
+                    <div class="modal fade" id="comprar'.$proveedor['id'].'">
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="modal-header">
-                            '.$proveedor[nombre].'
+                            '.$proveedor['nombre'].'
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -59,11 +59,11 @@
 
                             <form action="funciones/gerente.php" method="post">
                               <label class="mt-2">Cantidad: </label>
-                              <input type="hidden" name="idp" value="'.$proveedor[id].'">
-                              <input type="hidden" name="idi" value="'.$proveedor[idInsumo].'">
-                              <input type="hidden" name="costo" value="'.$proveedor[costo].'">
-                              <input type="hidden" name="tiempoEntrega" value="'.$proveedor[tiempoEntrega].'">
-                              <input type="number" name="cantidad" step="1" min="'.$proveedor[minimo].'" max="'.$proveedor[maximo].'" class="form-control mb-4" required>
+                              <input type="hidden" name="idp" value="'.$proveedor['id'].'">
+                              <input type="hidden" name="idi" value="'.$proveedor['idInsumo'].'">
+                              <input type="hidden" name="costo" value="'.$proveedor['costo'].'">
+                              <input type="hidden" name="tiempoEntrega" value="'.$proveedor['tiempoEntrega'].'">
+                              <input type="number" name="cantidad" step="1" min="'.$proveedor['minimo'].'" max="'.$proveedor['maximo'].'" class="form-control mb-4" required>
                               </div>
 
                               <div class="modal-footer">

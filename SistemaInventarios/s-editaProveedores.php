@@ -26,16 +26,16 @@
                 if($resultado=$conn->query($consultaProveedores)){
                   while ($proveedor=mysqli_fetch_array($resultado)) {
                     echo '<tr>';
-                    echo '<td>'.$proveedor[id].'</td>';
-                    echo '<td>'.$proveedor[nombre].'</td>';
-                    echo '<td>'.$proveedor[idInsumo].'</td>';
-                    echo '<td>'.$proveedor[costo].'</td>';
-                    echo '<td>'.$proveedor[minimo].'/'.$proveedor[maximo].'</td>';
-                    echo '<td>'.$proveedor[tiempoEntrega].' día/s</td>';
+                    echo '<td>'.$proveedor['id'].'</td>';
+                    echo '<td>'.$proveedor['nombre'].'</td>';
+                    echo '<td>'.$proveedor['idInsumo'].'</td>';
+                    echo '<td>'.$proveedor['costo'].'</td>';
+                    echo '<td>'.$proveedor['minimo'].'/'.$proveedor['maximo'].'</td>';
+                    echo '<td>'.$proveedor['tiempoEntrega'].' día/s</td>';
 
                     echo '<td style="width: 8%">';
                     echo '<form action="s-editaProveedorSel.php" method="post">';
-                    echo '<button type="submit" name="id" value="'.$proveedor[id].'" class="btn btn-sm btn-primary">';
+                    echo '<button type="submit" name="id" value="'.$proveedor['id'].'" class="btn btn-sm btn-primary">';
                     echo 'Editar';
                     echo '</button>';
                     echo '</form>';
@@ -43,7 +43,7 @@
 
                     echo '<td style="width: 8%">';
                     echo '<form action="funciones/supervisor.php" method="post">';
-                    echo '<input type="hidden" name="idel" value="'.$proveedor[id].'">';
+                    echo '<input type="hidden" name="idel" value="'.$proveedor['id'].'">';
                     echo '<button type="submit" name="accion" value="eliminarProveedor" class="btn btn-sm btn-danger">';
                     echo 'Eliminar';
                     echo '</button>';

@@ -32,22 +32,22 @@
                     $fechaActual=date("Y-m-d H:i:s");
 
                     echo "<tr>";
-                    echo '<td>'.$compra[id].'</td>';
-                    echo '<td>'.$compra[nombreP].'</td>';
-                    echo '<td>'.$compra[nombreI].'</td>';
-                    echo '<td>'.$compra[cantidad].'</td>';
-                    echo '<td>$'.$compra[importe].'</td>';
-                    echo '<td>'.$compra[fechaCompra].'</td>';
-                    echo '<td>'.$compra[fechaEntrega].'</td>';
+                    echo '<td>'.$compra['id'].'</td>';
+                    echo '<td>'.$compra['nombreP'].'</td>';
+                    echo '<td>'.$compra['nombreI'].'</td>';
+                    echo '<td>'.$compra['cantidad'].'</td>';
+                    echo '<td>$'.$compra['importe'].'</td>';
+                    echo '<td>'.$compra['fechaCompra'].'</td>';
+                    echo '<td>'.$compra['fechaEntrega'].'</td>';
 
-                    if ($fechaActual>$compra[fechaEntrega]) {
-                      if ($compra[estado]==0) {
+                    if ($fechaActual>$compra['fechaEntrega']) {
+                      if ($compra['estado']==0) {
                         echo "<td>";
                         echo '
                         <form class="form-inline" action="funciones/gerente.php" method="post">
-                          <input type="hidden" name="idi" value="'.$compra[idInsumo].'">
-                          <input type="hidden" name="idc" value="'.$compra[id].'">
-                          <input type="hidden" name="cantidad" value="'.$compra[cantidad].'">
+                          <input type="hidden" name="idi" value="'.$compra['idInsumo'].'">
+                          <input type="hidden" name="idc" value="'.$compra['id'].'">
+                          <input type="hidden" name="cantidad" value="'.$compra['cantidad'].'">
                           <select name="ubicacion" class="custom-select mr-2" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
