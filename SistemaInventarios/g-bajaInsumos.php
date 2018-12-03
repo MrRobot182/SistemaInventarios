@@ -35,7 +35,7 @@
 
 
         <div class="col-12 col-md-6">
-          <h3>Solicitud de baja de producto</h3>
+          <h3>Solicitud de baja de insumo</h3>
           <hr>
           <div class="rounded bg-light mx-auto p-2 mb-3">
             <form action="funciones/gerente.php" method="post">

@@ -8,10 +8,11 @@
       <div class="row mx-1 mx-sm-5 justify-content-center mt-5">
         <div class="col-10">
           <?php
-            if (count($_SESSION['producto']) == 0) {
-              echo '<div class="alert alert-danger w-100">No hay productos en carrito</div>';
-            }
-            else {
+            if (isset($_SESSION['producto'])) {
+              if (count($_SESSION['producto']) == 0) {
+                echo '<div class="alert alert-danger w-100">No hay productos en carrito</div>';
+              }
+              else {
           ?>
           <table class="table table-hover table-responsive-md table-light rounded text-center">
             <thead>
@@ -26,30 +27,30 @@
             </thead>
             <tbody>
           <?php
-            foreach ($_SESSION['producto'] as $key => $value) {
-              echo '<tr>';
-              echo '<td>'.$_SESSION['producto'][$key].'</td>';
-              echo '<td>'.$_SESSION['talla'][$key].'</td>';
-              echo '<td>'.$_SESSION['color'][$key].'</td>';
-              echo '<td>'.$_SESSION['cantidad'][$key].'</td>';
-              echo '<td>$'.$_SESSION['importe'][$key].'</td>';
+              foreach ($_SESSION['producto'] as $key => $value) {
+                echo '<tr>';
+                echo '<td>'.$_SESSION['producto'][$key].'</td>';
+                echo '<td>'.$_SESSION['talla'][$key].'</td>';
+                echo '<td>'.$_SESSION['color'][$key].'</td>';
+                echo '<td>'.$_SESSION['cantidad'][$key].'</td>';
+                echo '<td>$'.$_SESSION['importe'][$key].'</td>';
             ?>
-              <td>
-                <form action="funciones/cliente.php" method="post">
-                  <input type="hidden" name="indice" value="<?php echo $key?>">
-                  <button type="submit" name="accion" value="eliminarCarrito" class="btn btn-danger btn-sm">Quitar</button>
-                </form>
-              </td>
+                <td>
+                  <form action="funciones/cliente.php" method="post">
+                    <input type="hidden" name="indice" value="<?php echo $key?>">
+                    <button type="submit" name="accion" value="eliminarCarrito" class="btn btn-danger btn-sm">Quitar</button>
+                  </form>
+                </td>
           <?php
-              echo '</tr>';
+                echo '</tr>';
             }
           ?>
             </tbody>
           </table>
           <?php
-            if(isset($_GET["msj"]) && $_GET["msj"] == "ya_agregado") {
-              echo '<div class="alert alert-danger w-100">Ya hay una compra en el carrito de este producto</div>';
-            }
+              if(isset($_GET["msj"]) && $_GET["msj"] == "ya_agregado") {
+                echo '<div class="alert alert-danger w-100">Ya hay una compra en el carrito de este producto</div>';
+              }
           ?>
         </div>
       </div>
@@ -79,14 +80,18 @@
             </div>-->
           </form>
           <?php
-            if(isset($_GET["msj"]) && $_GET["msj"] == "captcha") {
-              echo '<div class="alert alert-danger mb-5">Código de verificación incorrecto</div>';
-            }
+              if(isset($_GET["msj"]) && $_GET["msj"] == "captcha") {
+                echo '<div class="alert alert-danger mb-5">Código de verificación incorrecto</div>';
+              }
           ?>
         </div>
       </div>
 
       <?php
+          }
+        }
+        else {
+          echo '<div class="alert alert-danger w-100">No hay productos en carrito</div>';
         }
       ?>
 
